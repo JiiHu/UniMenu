@@ -1,0 +1,378 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* CAFE */
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-size: 14px;
+	line-height: 20px;
+	font-family: 'Open Sans', sans-serif;
+	color: #555;
+}
+
+a {
+	text-decoration: none;
+	color: #444;
+    -webkit-transition: border .2s ease-in-out, color .2s ease-in-out;
+    transition: border .2s ease-in-out, color .2s ease-in-out;
+}
+
+a:hover {
+	text-decoration: none;
+	color: rgb(0,190,210);
+    -webkit-transition: border .2s ease-in-out, color .2s ease-in-out;
+    transition: border .2s ease-in-out, color .2s ease-in-out;
+}
+
+
+/* ---- */
+
+.cb {
+	width: 100%;
+	clear: both;
+	height: 1px;
+}
+
+nav {
+	color: #fff;
+	width: 100%;
+	padding-top: 5px;
+	background-color: rgb(0,190,210);
+}
+
+h1 {
+	float: left;
+	padding: 28px 20px;
+	font-size: 24px;
+	line-height: 26px;
+	font-weight: 300;
+}
+
+h1 span {
+	font-weight: 400;
+}
+
+ul#area {
+	padding: 20px;
+	float: right;
+	list-style:none;
+}
+ul#area li {
+	list-style: none;
+	display: inline-block;
+}
+ul#area li a {
+	padding: 10px 15px;
+	background-color: #fff;
+	border-radius: 4px;
+	margin: 0 5px;
+	border: 2px solid #fff;
+	display: inline-block;
+}
+ul#area li a:hover {
+	border: 2px solid rgb(0,190,210);
+}
+
+.container {
+	padding: 0;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+.today-button {
+	border: 2px solid rgb(0,190,210);
+	padding: 5px;
+	display: none;
+}
+
+#info {
+	background-color: #f8f8f8;
+}
+
+#info .container {
+	padding: 20px;
+}
+
+#nav {
+	display: none;
+}
+
+#nav ul li {
+	margin: 3px;
+	display: inline-block;
+}
+
+.button,
+#nav ul li a {
+	background-color: #fff;
+	border: 2px solid rgb(0,190,210);
+	display: inline-block;
+	padding: 11px;
+	border-radius: 5px;
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.button:hover,
+#nav ul li a:hover {
+	border-color: rgb(0,190,210);
+	display: inline-block;
+}
+
+#nav ul li a {
+	margin: 4px;
+}
+
+
+#menu .restaurant {
+	padding: 20px 20px 10px;
+	display: none;
+	float: left;
+	max-width: 310px;
+}
+
+.toggle-button {
+	font-size: 32px;
+	display: none;
+	float: right;
+}
+
+.visible {
+	display: block !important;
+}
+
+#menu li {
+	line-height: 20px;
+	min-width: 200px;
+}
+
+#menu li.food {
+	margin: 0;
+	padding: 5px 0;
+}
+
+.colors {
+	float: right;
+}
+
+div.color {
+	border: 3px solid #ccc;
+	margin: 0 5px 0 0;
+	height: 6px;
+	width: 6px;
+	display: inline-block;
+	border-radius: 6px;
+}
+
+div.Bistro {
+	border-color: #444;
+}
+
+div.Maukkaasti {
+	border-color: rgb(210,0,0);
+}
+
+div.Edullisesti {
+	border-color: #0082cc;
+}
+
+div.Kevyesti {
+	border-color: #0acc00;
+}
+
+div.Makeasti {
+	border-color: #ccb200;
+}
+
+.colors {
+	float: right;
+	text-align: right;
+	line-height: 22px;
+}
+.colors .color {
+	margin: 0 0px 0 5px;
+}
+
+#menu li .nutrition,
+#menu li .ingredients {
+	font-size: 10px;
+	line-height: 12px;
+	margin-left: 15px;
+	display: none;
+}
+
+ul.older {
+	display: none;
+}
+
+ul.day li:last-child {
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ff;
+}
+
+li.date {
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+li.title {
+	font-weight: bold;
+	padding: 0 0 10px;
+	font-size: 20px;
+	line-height: 28px;
+	border-bottom: 2px solid #eee;
+}
+
+.not-today {
+	display: none;
+}
+
+#wrap {
+	min-height: 100%;
+	overflow: auto;
+}
+
+#settings-button {
+	background-color: transparent;
+	margin-top: 7px;
+	display: block;
+}
+#settings-button:hover {
+	color: #fff;
+}
+
+#settings .menu-url {
+	color: #eee;
+	display: inline-block;
+	float: left;
+	padding: 7px;
+	margin: 10px 10px 0 0;
+	border-radius: 5px;
+	border: 3px solid rgb(94, 94, 94);
+}
+#settings .menu-url.saved {
+	border-color: rgb(132, 255, 0);
+}
+
+#settings {
+	background-color: #333;
+	color: #eee;
+	display: none;
+	padding: 20px;
+}
+
+/*--PHONE--*/
+@media (max-width: 767px) {
+	#menu .restaurant {
+		float: none;
+		padding: 3%;
+		width: 94%;
+		max-width: 100%;
+	}
+	nav h1 {
+		padding: 10px 20px;
+	}
+	ul#area {
+		padding: 0 20px 20px;
+	}
+	ul#area li a {
+		padding: 8px 11px;
+		margin: 5px 5px;
+	}
+	.button {
+		padding: 8px;
+		margin: 3px;
+		font-size: 12px;
+	}
+	.colors {
+		margin-top: 5px;
+		float: none;
+		text-align: left;
+	}
+	.menu-toggleable {
+		display: none;
+	}
+	.toggle-button {
+		display: block;
+	}
+}
+
+
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(fonts/DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2) format('woff2'), url(fonts/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(fonts/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/k3k702ZOKiLJc3WVjuplzOgdm0LZdjqr5-oayXSOefg.woff2) format('woff2'), url(fonts/k3k702ZOKiLJc3WVjuplzHhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url(fonts/xjAJXh38I15wypJXxuGMBo4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2'), url(fonts/xjAJXh38I15wypJXxuGMBobN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
