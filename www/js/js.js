@@ -12,68 +12,73 @@ var today = getTodayInUnicafeFormat();
 var allRestaurants = {
 	"helsinki": {
 		"keskusta": [
-					{"type":"unicafe", "id":5},
-				  	{"type":"unicafe", "id":31},
-				  	{"type":"unicafe", "id":1},
-				  	{"type":"unicafe", "id":2},
-				  	{"type":"unicafe", "id":3},
-				  	{"type":"unicafe", "id":34},
-				  	{"type":"unicafe", "id":4},
-				  	{"type":"unicafe", "id":32},
-				  	{"type":"unicafe", "id":30},
-				  	{"type":"unicafe", "id":33},
-				  	{"type":"unicafe", "id":15},
-				  	{"type":"unicafe", "id":7},
-				  	{"type":"unicafe", "id":8},
-				  	{"type":"unicafe", "id":29},
-				  	{"type":"unicafe", "id":9},
-				  	{"type":"amica", "id":3089},
-				  	{"type":"amica", "id":3091},
-				  	{"type":"amica", "id":3406},
-				  	{"type":"amica", "id":3090},
+						{"type":"unicafe", "id":5, "name":"Cafe Portaali"},
+						{"type":"unicafe", "id":31, "name":"Gaudeamus Kirja & Kahvi"},
+						{"type":"unicafe", "id":1, "name":"Metsätalo"},
+						{"type":"unicafe", "id":2, "name":"Olivia"},
+						{"type":"unicafe", "id":3, "name":"Porthania"},
+						{"type":"unicafe", "id":34, "name":"Porthania Opettajien ravintola"},
+						{"type":"unicafe", "id":4, "name":"Päärakennus"},
+						{"type":"unicafe", "id":32, "name":"Ravintola Fredrika Päärakennus"},
+						{"type":"unicafe", "id":30, "name":"Ravintola Domus"},
+						{"type":"unicafe", "id":33, "name":"Ravintola Serpens"},
+						{"type":"unicafe", "id":15, "name":"Soc&Kom"},
+						{"type":"unicafe", "id":7, "name":"Topelias"},
+						{"type":"unicafe", "id":8, "name":"Valtiotiede"},
+						{"type":"unicafe", "id":29, "name":"Viola"},
+						{"type":"unicafe", "id":9, "name":"Ylioppilasaukio"},
+						{"type":"amica", "id":3089, "name":"Aalto-yliopiston kauppakorkeakoulu / Rafla"},
+						{"type":"amica", "id":3091, "name":"Aalto-yliopisto Kauppakorkeakoulu"},
+						{"type":"amica", "id":3406, "name":"Svenska Handelshögskolan"},
+						{"type":"amica", "id":3090, "name":"Aalto-yliopiston kauppakorkeakoulu Arkadia"},
 				  ],
 		"meilahti": [
-					{"type":"unicafe", "id":13},
-				  	{"type":"unicafe", "id":14}
+						{"type":"unicafe", "id":13, "name":"Meilahti"},
+						{"type":"unicafe", "id":14, "name":"Ruskeasuo"}
 				  ],
 		"viikki": [
-					{"type":"unicafe", "id":16},
-					{"type":"unicafe", "id":17},
-					{"type":"unicafe", "id":18},
-					{"type":"amica", "id":"0061"}
+						{"type":"unicafe", "id":16, "name":"Biokeskus"},
+						{"type":"unicafe", "id":17, "name":"Korona"},
+						{"type":"unicafe", "id":18, "name":"Viikuna"},
+						{"type":"amica", "id":"0061", "name":"Helsingin yliopisto Eläinlääketieteenlaitos"}
 				  ],
 		"kumpula": [
-					{"type":"unicafe", "id":10},
-					{"type":"unicafe", "id":11},
-				  	{"type":"unicafe", "id":12}
+						{"type":"unicafe", "id":10, "name":"Chemicum"},
+						{"type":"unicafe", "id":11, "name":"Exactum"},
+						{"type":"unicafe", "id":12, "name":"Physicum"}
 				  ],
 		"metropolia": [
-					{"type":"unicafe", "id":21},
-					{"type":"unicafe", "id":20},
-					{"type":"unicafe", "id":25},
-					{"type":"unicafe", "id":28},
-					{"type":"unicafe", "id":22},
-					{"type":"unicafe", "id":19},
-					{"type":"unicafe", "id":26},
-					{"type":"unicafe", "id":23},
-					{"type":"unicafe", "id":27},
-					{"type":"unicafe", "id":24}
+					{"type":"unicafe", "id":21, "name":"Albertinkatu"},
+					{"type":"unicafe", "id":20, "name":"Bulevardi"},
+					{"type":"unicafe", "id":25, "name":"Hämeentie"},
+					{"type":"unicafe", "id":28, "name":"Leiritie"},
+					{"type":"unicafe", "id":22, "name":"Onnentie"},
+					{"type":"unicafe", "id":19, "name":"Ricola"},
+					{"type":"unicafe", "id":26, "name":"Sofianlehto"},
+					{"type":"unicafe", "id":23, "name":"Tukholmankatu"},
+					{"type":"unicafe", "id":27, "name":"Vanha Maantie"},
+					{"type":"unicafe", "id":24, "name":"Vanha Viertotie"}
 				],
 		"arabia": [
-					{"type":"amica", "id":3003},
-					{"type":"amica", "id":"0060"},
-					{"type":"amica", "id":3007}
+					{"type":"amica", "id":3003, "name":"Arcada"},
+					{"type":"amica", "id":"0060", "name":"Meccala"},
+					{"type":"amica", "id":3007, "name":"Pop&Jazz Konservatorio Jamipaja"}
 				],
 		"pasila": [
-					{"type":"amica", "id":"0084"},
-					{"type":"amica", "id":"0083"}
+					{"type":"amica", "id":"0084", "name":"Helia Bistro. Opetustalo"},
+					{"type":"amica", "id":"0083", "name":"Opetustalo / Pääraide"}
 				],
 		"muut": [
-					{"type":"amica", "id":3067},
-					{"type":"amica", "id":3147},
-					{"type":"amica", "id":3140},
-					{"type":"amica", "id":2123}
+					{"type":"amica", "id":3067, "name":"Teatterikorkeakoulu"},
+					{"type":"amica", "id":3147, "name":"Edupoli Herttoniemi"},
+					{"type":"amica", "id":3140, "name":"Diakonia-Ammattikorkeakoulu"},
+					{"type":"amica", "id":2123, "name":"Alppica, Helsingin Diakonissalaitoksen Säätiö"}
 				  ]
+		},
+		"lappeenranta": {
+			"keskusta": [
+						{"type":"amica", "id":3348, "name":"Anselmi"}
+					]
 		}
 	};
 

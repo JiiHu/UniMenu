@@ -326,6 +326,16 @@ li.title {
 	padding: 15px;
 }
 
+#settings p {
+  padding-top: 10px;
+  font-size: 12px;
+  color: #878787;
+}
+
+#settings p i {
+	white-space: nowrap;
+}
+
 /*--PHONE--*/
 @media (max-width: 767px) {
 	#menu .restaurant {
