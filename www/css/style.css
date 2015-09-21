@@ -47,8 +47,17 @@ table {
 	border-spacing: 0;
 }
 
+/*! Tabby v9.0.0 | (c) 2015 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/tabby */
+/*!
+ * Tabby v9.0.0: Simple, mobile-first toggle tabs.
+ * (c) 2015 Chris Ferdinandi
+ * MIT License
+ * http://github.com/cferdinandi/tabby
+ */.tabs{display:none;visibility:hidden}.js-tabby .tabs{visibility:visible}.tabs a,.tabs button{cursor:pointer}.js-tabby .tabs-pane{display:none;visibility:hidden}.tabs-pane.active{display:block;visibility:visible}.tabs:after,.tabs:before{display:table;content:""}.tabs:after{clear:both}
 
-/* CAFE */
+
+
+/* UNIMENU */
 
 html, body {
 	width: 100%;
@@ -77,8 +86,45 @@ a:hover {
 	text-decoration: none;
 }
 
+i {
+	font-style: italic;
+}
 
-/* ---- */
+h4 {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.5;
+	margin: 10px 0 0;
+}
+
+/* TABS */
+
+.tabs-content {
+	padding: 0 15px;
+}
+
+ul.tabs {
+	display: table;
+	width: 100%;
+	margin-top: 2px;
+}
+
+ul.tabs li {
+  display: table-cell;
+}
+
+ul.tabs li a {
+	background-color: #eee;
+  width: 94%;
+  padding: 10px;
+  margin: 5px 3%;
+  box-sizing: border-box;
+  display: block;
+  font-weight: bold;
+  font-size: 90%;
+  color: #9B9B9B;
+}
+
 
 .cb {
 	width: 100%;
@@ -128,7 +174,7 @@ ul#area li a:hover {
 
 .container {
 	padding: 0;
-	margin: 0 auto;
+	margin: 0 auto 10px;
 	max-width: 1200px;
 }
 
@@ -138,16 +184,29 @@ ul#area li a:hover {
 	display: none;
 }
 
-#info {
+#list {
 	background-color: #f8f8f8;
 }
 
-#info .container {
+#list .container {
 	padding: 10px;
 }
 
-#nav {
-	display: none;
+#nav .city h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 5px solid #eee;
+  padding: 10px 0 3px;
+  margin: 5px 5px -5px;
+	font-size: 14px;
+}
+
+#nav .city h3 {
+  text-transform: capitalize;
+  font-weight: bold;
+  border-bottom: 3px solid #eee;
+  padding: 12px 0 5px;
+  margin: 5px;
 }
 
 
@@ -177,6 +236,9 @@ ul#area li a:hover {
 	margin: 4px;
 }
 
+.restaurant-list {
+	display: none;
+}
 
 #menu .restaurant {
     padding: 20px 20px 10px;
@@ -205,9 +267,6 @@ ul#area li a:hover {
 	padding: 3px 0;
 }
 
-.colors {
-	float: right;
-}
 
 div.color {
 	border: 3px solid #ccc;
@@ -240,8 +299,6 @@ div.Makeasti {
 }
 
 .colors {
-	float: right;
-	text-align: right;
 	line-height: 22px;
 }
 .colors .color {
@@ -302,7 +359,6 @@ li.title {
 #settings .menu-url {
 	color: #eee;
 	display: inline-block;
-	float: left;
   padding: 5px 10px;
 	font-size: 12px;
   margin: 9px 9px 0 0;
@@ -318,11 +374,13 @@ li.title {
 	background-color: #464852;
 }
 
+#settings, #list {
+	margin: 0 -15px;
+}
 
 #settings {
 	background-color: #333;
 	color: #eee;
-	display: none;
 	padding: 15px;
 }
 
@@ -336,13 +394,35 @@ li.title {
 	white-space: nowrap;
 }
 
+#settins .area {
+	clear: both;
+}
+
+#settings .city h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 5px solid #484848;
+  padding: 10px 0 3px;
+  margin: 5px 5px -5px;
+	font-size: 14px;
+}
+
+#settings .city h3 {
+	text-transform: capitalize;
+  font-weight: normal;
+  border-bottom: 3px solid #484848;
+  padding: 10px 0 3px;
+  margin: 5px;
+  color: #DCDCDC;
+}
+
 /*--PHONE--*/
 @media (max-width: 767px) {
 	#menu .restaurant {
-		float: none;
-		padding: 3% 3% 0 3%;
-		width: 94%;
-		max-width: 100%;
+    float: none;
+    padding: 5px 0 10px;
+    width: 100%;
+    max-width: 100%;
 	}
 	nav h1 {
 		padding: 10px 20px;
@@ -363,9 +443,6 @@ li.title {
 		margin-top: 5px;
 		float: none;
 		text-align: left;
-	}
-	.menu-toggleable {
-		display: none;
 	}
 	.toggle-button {
 		display: block;
