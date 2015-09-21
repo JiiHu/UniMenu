@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.unilunch.app" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.unilunch.app" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <name>unimenu</name>
     <description>
-	An application which shows the menu of UniCafe restaurants.
+	An application which shows the menus of UniCafe restaurants.
     </description>
-    <author email="jonne.huotari@cs.helsinki.fi" href="http://huotari.me">
+    <author email="play-store@huotari.me" href="http://huotari.me">
         Jonne Huotari
     </author>
     <content src="index.html" />

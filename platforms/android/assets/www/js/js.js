@@ -1,11 +1,67 @@
 
 var api = "http://messi.hyyravintolat.fi/publicapi/";
 
-var restaurants = new Array();
+var amicaApiStart = "http://www.amica.fi/modules/json/json/Index?costNumber=";
+var amicaApiEnd = "&language=fi";
+
 var area = new Array();
 var areaName = new Array();
 
-var speed = 400;
+var speed = 200;
+
+var today = getTodayInUnicafeFormat();
+
+// array['city']['area']['restaurantProvider']
+
+var allRestaurants = { 
+	"helsinki": { 
+		"keskusta": [
+					{"type":"unicafe", "id":5},
+				  	{"type":"unicafe", "id":31},
+				  	{"type":"unicafe", "id":1},
+				  	{"type":"unicafe", "id":2},
+				  	{"type":"unicafe", "id":3},
+				  	{"type":"unicafe", "id":34},
+				  	{"type":"unicafe", "id":4},
+				  	{"type":"unicafe", "id":32},
+				  	{"type":"unicafe", "id":30},
+				  	{"type":"unicafe", "id":33},
+				  	{"type":"unicafe", "id":15},
+				  	{"type":"unicafe", "id":7},
+				  	{"type":"unicafe", "id":8},
+				  	{"type":"unicafe", "id":29}, 
+				  	{"type":"unicafe", "id":9}
+				  ],
+		"meilahti": [
+					{"type":"unicafe", "id":13},
+				  	{"type":"unicafe", "id":14}
+				  ],
+		"viikki": [
+					{"type":"unicafe", "id":16},
+					{"type":"unicafe", "id":17},
+				  	{"type":"unicafe", "id":18}
+				  ],
+		"kumpula": [
+					{"type":"unicafe", "id":10},
+					{"type":"unicafe", "id":11},
+				  	{"type":"unicafe", "id":12}
+				  ],
+		"metropolia": [
+					{"type":"unicafe", "id":21},
+					{"type":"unicafe", "id":20},
+					{"type":"unicafe", "id":25},
+					{"type":"unicafe", "id":28},
+					{"type":"unicafe", "id":22},
+					{"type":"unicafe", "id":19},
+					{"type":"unicafe", "id":26},
+					{"type":"unicafe", "id":23},
+					{"type":"unicafe", "id":27},
+				  	{"type":"unicafe", "id":24}
+				  ]
+		}
+	};
+
+
 
 var keskusta = [5, 31, 1, 2, 3, 34, 4, 32, 30, 33, 15, 7, 8, 29, 9];
 var kumpula = [10, 11, 12];
@@ -13,37 +69,38 @@ var meilahti = [13, 14];
 var viikki = [16, 17, 18];
 var metropolia = [21, 20, 25, 28, 22, 19, 26, 23, 27, 24];
 
+var amica = [3003, 3089, 3091, 3406, "0084", 3007, 2123, 3090, 3140, "0083", "0060", 3067, "0061", 3147];
+
 var hash = window.location.hash.substr(1);
 var hashRestaurants = hash.split(',');
 if (hashRestaurants[0] == "") {
 	hashRestaurants.splice(0,1);
 }
 
+
+var restaurantData = {};
+
 function init() {
 
 	$("#nav a.menu-url").click(function(e){
 		e.preventDefault();
-		var title = $(this).attr('title');
-		toggleRestaurant(title);
+		var id = $(this).attr('id-value');
+		toggleRestaurant(id);
 	});
 
-	$("#settings-menu a.menu-url").click(function(e){
+	$(document).on('click', "#settings-menu a.menu-url", function(e){
 		e.preventDefault();
-		var title = $(this).attr('title');
-		toggleRestaurantSaveState(title);
-
+		var id = $(this).attr('id-value');
+		toggleRestaurantSaveState(id);
+		toggleRestaurant(id);
 	});
 
-	$("a.button").click(function(e){
+	$(document).on('click', "a.button", function(e){
 		e.preventDefault();
 	});
 
-	$("#settings-button").click(function(e){
+	$(document).on('click', "#settings-button", function(e){
 		$("#settings").slideToggle(speed);
-	});
-
-	$("#area-button").click(function(e){
-		$("#area").slideToggle(speed);
 	});
 
 	$("#extra-button").click(function(e){
@@ -64,63 +121,68 @@ function init() {
 		$(".previous-txt").slideToggle(speed);
 	});
 
-	$("a.nutrition-button").click(function(e){
-		$(".nutrition").slideToggle(speed);
-	});
-
-	$("a.ingredients-button").click(function(e){
-		$(".ingredients").slideToggle(speed);
-	});
-
-
-	$("a#keskusta").click(function(e){
-		e.preventDefault();
-		toggleArea(keskusta);
-	});
-
-	$("a#kumpula").click(function(e){
-		e.preventDefault();
-		toggleArea(kumpula);
-	});
-
-	$("a#meilahti").click(function(e){
-		e.preventDefault();
-		toggleArea(meilahti);
-	});
-
-	$("a#viikki").click(function(e){
-		e.preventDefault();
-		toggleArea(viikki);
-	});
-
-	$("a#metropolia").click(function(e){
-		e.preventDefault();
-		toggleArea(metropolia);
-	});
-
 }
 
-function toggleArea(arr) {
-	for (var i = 0; i < arr.length; i++) {
-		toggleRestaurant(arr[i]);
-	};
-}
+
 
 function toggleRestaurant(id) {
-	$("#restaurant-"+id).slideToggle(speed);
+	if (restaurantData[id]['visible']) {
+		restaurantData[id]['visible'] = false;
+		$( "#restaurant-" + id ).remove();
+	} else {
+		restaurantData[id]['visible'] = true;
+		generateHtmlForRestaurant(id);
+	}
 }
+
+
+
+function generateHtmlForRestaurant(id) {
+	var html = "<li class='title' class='restaurant-" + id+ "'>" + restaurantData[id]['name'] + "</li>";
+
+	$.each( restaurantData[id]['days'], function( key, val ) {
+		if (val['date'] == today) {
+			html += generateHtmlForRestaurantDay(val);
+		}
+	});
+
+	html = "<ul>" + html + "</ul>";
+	html = "<div id='restaurant-" + id + "' class='restaurant'>" + html + "</div>";
+
+	$( "#menu" ).append( html );
+}
+
+function generateHtmlForRestaurantDay(dayObject) {
+	var html = "<li class='date'>" + dayObject['date'] + "</li>";
+
+	if(jQuery.isEmptyObject(dayObject['menu'])) {
+		html += "<li class='food'>-</li>";
+	} else {
+		// iterate through day's foods
+		$.each( dayObject['menu'], function( key, val ) {
+			var food = "<li class='food'><div class='color " + val.price.name + "'></div>" + val.name + "</li>";
+			html += food;
+		});
+	}
+
+	html = "<ul id='menu-item'>" + html + "</ul>";
+	return html;
+}
+
+
+
 
 function toggleRestaurantSaveState(id) {
 	if (isRestaurantSaved(id)) {
-		window.localStorage.removeItem(id);
+		window.localStorage.removeItem('restaurant-' + id);
 	} else {
-		window.localStorage.setItem(id, true);
+		window.localStorage.setItem('restaurant-' + id, true);
 	}
 	$("#settings-restaurant-"+id).toggleClass("saved");
 }
 
 function isRestaurantSaved(id) {
-	var value = window.localStorage.getItem(id);
+	var value = window.localStorage.getItem('restaurant-' + id);
 	if (value == null) {
 		return false;
 	}
@@ -165,94 +227,133 @@ function addLeadingZero(int) {
 	return int;
 }
 
+function getTodayInUnicafeFormat() {
+	var thisDate = new Date();
+	var dd = addLeadingZero( thisDate.getDate() );
+	var mm = addLeadingZero( thisDate.getMonth()+1 ); 
+	return dd+"."+mm;
+}
+
+function convertAmicaDateToUnicafeFormat(amica) {
+	var converted = amica.substr(8, 2) + ".";
+	converted += amica.substr(5, 2);
+
+	return converted;
+}
+
 function getRestaurant(id) {
+	var menus = {};
 	var url = api + "restaurant/" + id;
+
 	$.getJSON(url, function( data ) {
 		var items = [];
-
-		items.push("<ul>");
-		items.push("<li class='title'>" + restaurants[id] + "</li>");
-		items.push("<ul class='menu-item'>");
 		$.each( data.data, function( key, val ) {
 			var dateStripped = this.date.substring(3);
-			var today = new Date();
-			var dd = today.getDate();
-			dd = addLeadingZero(dd);
-			var mm = today.getMonth()+1;
-			mm = addLeadingZero(mm);
-			var now = dd+"."+mm;
-			var older = dateIsOlder(now, dateStripped);
-			var menuIsForToday = dateIsToday(now, dateStripped);
+			var isInPast = dateIsOlder(today, dateStripped);
+			var menuIsForToday = dateIsToday(today, dateStripped);
 
-			var olderClass = "";
-			if (older) {
-				olderClass = " older";
-			}
-
-			items.push("<ul class='day"+olderClass+"'>");
+			var day = {};
+			day['date'] = dateStripped;
+			day['past'] = isInPast;
+			day['today'] = menuIsForToday;
+			day['menu'] = {};
 
 			if (!jQuery.isEmptyObject(this.data)) {
-				var todayClass = "";
-				if (!menuIsForToday && !older) {
-					todayClass = " not-today";
-				}
-				items.push( "<li class='date"+todayClass+"'>" + this.date + "</li>" );
-				$.each( this.data, function( key, val ) {
-					var nutrition = "";
-					if (this.nutrition != null) {
-						nutrition = "<div class='nutrition'>" + this.nutrition + "</div>";
-					}
-					var ingredients = "";
-					if (this.ingredients != null) {
-						ingredients = "<div class='ingredients'>" + this.ingredients + "</div>";
-					}
-					items.push("<li class='food"+todayClass+"'><div class='color " + this.price.name + "'></div>" + 
-						this.name + nutrition + ingredients + "</li>");
-				});
+				day['menu'] = this.data;
 			}
-			items.push("</ul>");
+
+			menus[dateStripped] = day;
 		});
 
-		items.push("</ul>");
-		$( "<div/>", {
-			"id": "restaurant-" + id,
-			"class": "restaurant",
-			html: items.join( "" )
-		}).insertBefore( "#menu-cb" );
-
 		if (isRestaurantSaved(id)) {
-			$("#restaurant-"+id).slideToggle(speed);
+			toggleRestaurant(id);
 		}
 	});
+
+	return menus;
 }
 
 $(document).ready(function(){
+
+	// get unicafe restaurants
 	var url = api + "restaurants";
 	$.getJSON(url, function( data ) {
-		var items = [];
-		var settings = [];
 		$.each( data.data, function( key, val ) {
-			items.push( "<li><a href='#' class='menu-url' title='" + this.id + "'>" + this.name + "</a></li>" );
-			
-			var saved = "";
+			restaurantData[this.id] = {};
+			restaurantData[this.id]['name'] = this.name;
+			restaurantData[this.id]['saved'] = isRestaurantSaved(this.id);
+			restaurantData[this.id]['days'] = getRestaurant(this.id);
+			restaurantData[this.id]['visible'] = false;
+
+			$( "#nav" ).append( "<a href='#' id-value='" + this.id + "' class='menu-url'>" + this.name + "</a>" );
+
+			var saved = '';
 			if (isRestaurantSaved(this.id)) {
-				saved = " saved";
+				saved = ' saved';
 			}
-			settings.push( "<li><a href='#' class='menu-url" + saved + "' title='" + this.id + "' id='settings-restaurant-" + this.id +"'>" + this.name + "</a></li>" );
-
-			restaurants[this.id] = this.name;
-			getRestaurant(this.id);
+			$( "#settings-menu" ).append( "<a href='#' id-value='" + this.id + "' class='menu-url" + saved + "' id='settings-restaurant-" + this.id + "'>" + this.name + "</a>" );
 		});
-		$( "<ul/>", {
-			"class": "restaurant-list",
-			html: items.join( "" )
-		}).appendTo( "#nav" );
 
-		$( "<ul/>", {
-			"class": "restaurant-list",
-			html: settings.join( "" )
-		}).insertBefore( "#settings-cb" );
 
 		init();
 	});
+
+	// get amica restaurants
+
+	amica.forEach(function(amicaRestaurant) {
+		$.getJSON(amicaApiStart + amicaRestaurant + amicaApiEnd, function( data ) {
+			//console.log(data);
+
+			restaurantData[amicaRestaurant] = {};
+			restaurantData[amicaRestaurant]['days'] = {};
+			restaurantData[amicaRestaurant]['name'] = data.RestaurantName;
+			restaurantData[amicaRestaurant]['visible'] = false;
+			restaurantData[amicaRestaurant]['saved'] = isRestaurantSaved(amicaRestaurant);
+
+			
+			data['MenusForDays'].forEach(function(menu) {
+				//console.log(menu);
+				var date = convertAmicaDateToUnicafeFormat(menu.Date);
+
+				var isInPast = dateIsOlder(today, date);
+				var menuIsForToday = dateIsToday(today, date);
+				var day = {};
+				day['date'] = date;
+				day['past'] = isInPast;
+				day['today'] = menuIsForToday;
+				day['menu'] = [];
+
+				menu['SetMenus'].forEach(function(set) {
+
+					var hash = {};
+					hash['price'] = 'amica';
+					var foodList = '';
+					set['Components'].forEach(function(component) {
+						foodList += component + "<br />";
+					});
+					hash['name'] = foodList;
+					day['menu'].push(hash);
+				});
+				
+				restaurantData[amicaRestaurant]['days'][date] = day;
+			});
+
+			$( "#nav" ).append( "<a href='#' id-value='" + amicaRestaurant + "' class='menu-url amica'>" + data.RestaurantName + "</a>" );
+
+			var saved = '';
+			if (isRestaurantSaved(amicaRestaurant)) {
+				saved = ' saved';
+			}
+			$( "#settings-menu" ).append( "<a href='#' id-value='" + amicaRestaurant + "' class='menu-url amica" + saved + "' id='settings-restaurant-" + amicaRestaurant + "'>" + data.RestaurantName + "</a>" );
+
+			if (isRestaurantSaved(amicaRestaurant)) {
+				toggleRestaurant(amicaRestaurant);
+			}
+
+		});
+	});
+
+	
+
+
 });

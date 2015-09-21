@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.kaljacafe.app;
+package com.unilunch.test;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

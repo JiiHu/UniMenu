@@ -1,2 +1,2 @@
-/home/jonnehuo/Dropbox/cordova/unilunch/app/platforms/android/CordovaLib/ant-build/AndroidManifest.xml : \
-/home/jonnehuo/Dropbox/cordova/unilunch/app/platforms/android/CordovaLib/AndroidManifest.xml \
+/Users/jiihu/projects/unilunch/app/platforms/android/CordovaLib/ant-build/AndroidManifest.xml : \
+/Users/jiihu/projects/unilunch/app/platforms/android/CordovaLib/AndroidManifest.xml \
