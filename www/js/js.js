@@ -34,7 +34,15 @@ $(document).on('click', "a.restaurant-button", function(e){
 });
 
 $(document).on('click', ".area h3", function(e){
-	$(this).parent().find('.restaurant-list').toggle(0);
+	var parent = $(this).parent();
+	parent.toggleClass('open');
+	parent.find('.restaurant-list').toggle(0);
+});
+
+$(document).on('click', "li.title", function(e){
+	var fullId = $(this).parent().parent().attr('id');
+
+	showModal(fullId);
 });
 
 
@@ -140,6 +148,12 @@ function getUnicafeRestaurant(id, fullId) {
 	var url = unicafeApi + "restaurant/" + id;
 
 	$.getJSON(url, function( data ) {
+		var open = 'Open: ' + data['information']['lounas']['regular'][0]['open'];
+		open = open + " - " + data['information']['lounas']['regular'][0]['close'];
+
+		saveAddress(fullId, data['information']['address'], data['information']['zip'], data['information']['city']);
+		restaurantData[fullId]['info']['open'] = open;
+
 		$.each( data.data, function( key, val ) {
 			var dateStripped = this.date.substring(3);
 			var isInPast = dateIsOlder(today, dateStripped);
@@ -185,6 +199,8 @@ function getMenuForAmicaRestaurant(setMenus) {
 function getAmicaRestaurant(amicaRestaurant, fullId) {
 	var amicaUrl = amicaApiStart + amicaRestaurant + amicaApiEnd;
 	$.getJSON(amicaUrl, function( data ) {
+		restaurantData[fullId]['info']['url'] = data['RestaurantUrl'];
+
 		data['MenusForDays'].forEach(function(menu) {
 			var date = convertAmicaDateToUnicafeFormat(menu.Date);
 			var isInPast = dateIsOlder(today, date);
@@ -222,13 +238,22 @@ function fetchMenu(id) {
 }
 
 
-function createEmptyRestaurantData(id, restaurant) {
+function createEmptyRestaurantData(id, restaurant, area, city) {
 	restaurantData[id] = {};
 	restaurantData[id]['days'] = {};
 	restaurantData[id]['name'] = restaurant.name;
+	restaurantData[id]['type'] = restaurant.name;
+	restaurantData[id]['area'] = area;
+	restaurantData[id]['city'] = city;
 	restaurantData[id]['visible'] = false;
 	restaurantData[id]['loading'] = false;
 	restaurantData[id]['loaded'] = false;
+	restaurantData[id]['info'] = {};
+	restaurantData[id]['info']['url'] = '';
+  restaurantData[id]['info']['address'] = '';
+  restaurantData[id]['info']['zip'] = '';
+  restaurantData[id]['info']['city'] = '';
+  restaurantData[id]['info']['open'] = '';
 
 	var saved = isRestaurantSaved(id);
 	restaurantData[id]['saved'] = saved;
@@ -273,7 +298,7 @@ $(document).ready(function(){
 				var savedId = getLetterForType(restaurant.type) + restaurant.id;
 					var saved = getSavedClass(savedId);
 
-				createEmptyRestaurantData(savedId, restaurant);
+				createEmptyRestaurantData(savedId, restaurant, area, city);
 				addButtonsForRestaurant(savedId, restaurant.name, restaurant.type, saved, city, area);
 			});
 		}

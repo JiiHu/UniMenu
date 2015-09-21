@@ -61,3 +61,42 @@ function getLetterForType(type) {
 	}
 	return '';
 }
+
+
+function getModalText(id) {
+  var text = '';
+
+  text += "<b class='capitalize'>" + restaurantData[id]['city'] + " - " + restaurantData[id]['area'] + "</b><br />";
+
+  if (restaurantData[id]['info']['open'] != '') {
+    text += restaurantData[id]['info']['open'] + "<br />";
+  }
+
+  if (restaurantData[id]['info']['url'] != '') {
+    text += "<a target='_BLANK' href='"+restaurantData[id]['info']['url'] + "'>WWW</a>";
+  }
+
+  if (restaurantData[id]['info']['address'] != '') {
+    text += restaurantData[id]['info']['address'] + ", " + restaurantData[id]['info']['zip'] + " " + restaurantData[id]['info']['city'] + "<br />";
+  }
+
+  return text;
+}
+
+function showModal(fullId) {
+  var inst = $('[data-remodal-id=modal]').remodal();
+
+  $('#modal h2').html( restaurantData[fullId]['name'] );
+
+  var text = getModalText(fullId);
+  $('#modal p').html( text );
+
+  inst.open();
+}
+
+
+function saveAddress(fullId, address, zip, city) {
+  restaurantData[fullId]['info']['address'] = address;
+  restaurantData[fullId]['info']['zip'] = zip;
+  restaurantData[fullId]['info']['city'] = city;
+}

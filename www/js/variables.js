@@ -12,15 +12,15 @@ var restaurantData = {};
 var allRestaurants = {
 	"helsinki": {
 		"keskusta": [
-						{"type":"amica", "id":3089, "name":"Aalto-yliopiston kauppakorkeakoulu / Rafla"},
-						{"type":"amica", "id":3090, "name":"Aalto-yliopiston kauppakorkeakoulu Arkadia"},
-						{"type":"amica", "id":3091, "name":"Aalto-yliopisto Kauppakorkeakoulu"},
+						{"type":"amica", "id":3089, "name":"Aalto kauppakorkeakoulu / Rafla"},
+						{"type":"amica", "id":3090, "name":"Aalto kauppakorkeakoulu Arkadia"},
+						{"type":"amica", "id":3091, "name":"Aalto Kauppakorkeakoulu"},
 						{"type":"unicafe", "id":5, "name":"Cafe Portaali"},
 						{"type":"unicafe", "id":31, "name":"Gaudeamus Kirja & Kahvi"},
 						{"type":"unicafe", "id":1, "name":"Metsätalo"},
 						{"type":"unicafe", "id":2, "name":"Olivia"},
 						{"type":"unicafe", "id":3, "name":"Porthania"},
-						{"type":"unicafe", "id":34, "name":"Porthania Opettajien ravintola"},
+						{"type":"unicafe", "id":34, "name":"Porthania (Opettajien)"},
 						{"type":"unicafe", "id":4, "name":"Päärakennus"},
 						{"type":"unicafe", "id":32, "name":"Ravintola Fredrika Päärakennus"},
 						{"type":"unicafe", "id":30, "name":"Ravintola Domus"},
@@ -38,7 +38,7 @@ var allRestaurants = {
 				  ],
 		"viikki": [
 						{"type":"unicafe", "id":16, "name":"Biokeskus"},
-						{"type":"amica", "id":"0061", "name":"Helsingin yliopisto Eläinlääketieteenlaitos"},
+						{"type":"amica", "id":"0061", "name":"HY Eläinlääketieteenlaitos"},
 						{"type":"unicafe", "id":17, "name":"Korona"},
 						{"type":"unicafe", "id":18, "name":"Viikuna"},
 				  ],
@@ -70,11 +70,18 @@ var allRestaurants = {
 				],
 		"muut": [
 					{"type":"amica", "id":2123, "name":"Alppica, Helsingin Diakonissalaitoksen Säätiö"},
-					{"type":"amica", "id":3140, "name":"Diakonia-Ammattikorkeakoulu"},
+					{"type":"amica", "id":3140, "name":"Diakonia-AMK"},
 					{"type":"amica", "id":3147, "name":"Edupoli Herttoniemi"},
 					{"type":"amica", "id":3067, "name":"Teatterikorkeakoulu"},
-				  ]
+				]
 		},
+    "espoo": {
+      "otaniemi": [
+          {"type":"amica", "id":"0199", "name": "Aalto, TUAS"},
+          {"type":"amica", "id":"0191", "name": "Kvarkki"},
+          {"type":"amica", "id":3292, "name": "Laurea AMK, Otaniemi"},
+        ]
+    },
 		"lappeenranta": {
 			"keskusta": [
 						{"type":"amica", "id":3348, "name":"Anselmi"}

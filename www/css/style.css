@@ -90,6 +90,14 @@ i {
 	font-style: italic;
 }
 
+b {
+	font-weight: bold;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
 h4 {
   font-weight: bold;
   font-size: 15px;
@@ -123,6 +131,11 @@ ul.tabs li a {
   font-weight: bold;
   font-size: 90%;
   color: #9B9B9B;
+	text-align: center;
+}
+
+ul.tabs li a.active {
+	color: #444;
 }
 
 
@@ -140,15 +153,26 @@ nav {
 }
 
 h1 {
-	float: left;
 	padding: 28px 20px;
 	font-size: 24px;
 	line-height: 26px;
 	font-weight: 300;
 }
 
+.site-title {
+	float: left;
+}
+
 h1 span {
 	font-weight: 400;
+}
+
+h2 {
+  font-size: 20px;
+  display: block;
+  margin: 0 0 10px;
+  border-bottom: 3px solid #eee;
+  padding: 0 0 7px;
 }
 
 ul#area {
@@ -197,7 +221,7 @@ ul#area li a:hover {
   font-weight: bold;
   border-bottom: 5px solid #eee;
   padding: 10px 0 3px;
-  margin: 5px 5px -5px;
+  margin: 12px 5px -5px;
 	font-size: 14px;
 }
 
@@ -207,6 +231,7 @@ ul#area li a:hover {
   border-bottom: 3px solid #eee;
   padding: 12px 0 5px;
   margin: 5px;
+	cursor: pointer;
 }
 
 
@@ -332,10 +357,11 @@ li.date {
 
 li.title {
 	font-weight: bold;
-    padding: 2px 0 5px;
+	padding: 2px 0 5px;
 	font-size: 20px;
 	line-height: 28px;
 	border-bottom: 2px solid #eee;
+	cursor: pointer;
 }
 
 .not-today {
@@ -390,12 +416,13 @@ li.title {
   color: #878787;
 }
 
-#settings p i {
-	white-space: nowrap;
+#settings .area {
+	clear: both;
 }
 
-#settins .area {
-	clear: both;
+
+#info p i {
+	white-space: nowrap;
 }
 
 #settings .city h2 {
@@ -403,7 +430,7 @@ li.title {
   font-weight: bold;
   border-bottom: 5px solid #484848;
   padding: 10px 0 3px;
-  margin: 5px 5px -5px;
+  margin: 10px 5px -5px;
 	font-size: 14px;
 }
 
@@ -411,9 +438,10 @@ li.title {
 	text-transform: capitalize;
   font-weight: normal;
   border-bottom: 3px solid #484848;
-  padding: 10px 0 3px;
+  padding: 12px 0 6px;
   margin: 5px;
   color: #DCDCDC;
+	cursor: pointer;
 }
 
 /*--PHONE--*/
