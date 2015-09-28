@@ -1,12 +1,6 @@
 
 var today = getTodayInUnicafeFormat();
 
-var hash = window.location.hash.substr(1);
-var hashRestaurants = hash.split(',');
-if (hashRestaurants[0] == "") {
-	hashRestaurants.splice(0,1);
-}
-
 
 $(document).on('click', "#nav a.menu-url", function(e){
 	e.preventDefault();
@@ -53,11 +47,7 @@ function toggleRestaurant(id) {
 		$( "#" + id ).remove();
 	} else {
 		restaurantData[id]['visible'] = true;
-
-		// fetch food data
 		fetchMenu(id);
-
-		//generateHtmlForRestaurant(id);
 	}
 }
 
@@ -138,17 +128,36 @@ function restaurantIsFetched(id) {
 
 	if (restaurantData[id]['visible'] == true ) {
 		generateHtmlForRestaurant(id);
+		$('#empty-notification').remove();
 	}
 }
 
+function parseUnicafeMenu(data) {
 
+	$.each( data, function( key, food ) {
+		var meta = '';
+		if (!jQuery.isEmptyObject( food['meta'][0] )) {
+			meta += ' [';
+			$.each( food['meta'][0], function( key, val ) {
+				meta += val + ', ';
+			});
+			meta = meta.substring(0, meta.length - 2);
+			meta += "]";
+		};
+		// remove last comma
+
+		food['name'] = food['name'] + meta;
+	});
+
+	return data;
+}
 
 function getUnicafeRestaurant(id, fullId) {
 	var menus = {};
 	var url = unicafeApi + "restaurant/" + id;
 
 	$.getJSON(url, function( data ) {
-		var open = 'Open: ' + data['information']['lounas']['regular'][0]['open'];
+		var open = 'Regular open: ' + data['information']['lounas']['regular'][0]['open'];
 		open = open + " - " + data['information']['lounas']['regular'][0]['close'];
 
 		saveAddress(fullId, data['information']['address'], data['information']['zip'], data['information']['city']);
@@ -166,7 +175,7 @@ function getUnicafeRestaurant(id, fullId) {
 			day['menu'] = {};
 
 			if (!jQuery.isEmptyObject(this.data)) {
-				day['menu'] = this.data;
+				day['menu'] = parseUnicafeMenu(this.data);
 			}
 
 			menus[dateStripped] = day;
@@ -250,9 +259,9 @@ function createEmptyRestaurantData(id, restaurant, area, city) {
 	restaurantData[id]['loaded'] = false;
 	restaurantData[id]['info'] = {};
 	restaurantData[id]['info']['url'] = '';
-  restaurantData[id]['info']['address'] = '';
-  restaurantData[id]['info']['zip'] = '';
-  restaurantData[id]['info']['city'] = '';
+  restaurantData[id]['info']['address'] = restaurant.address;
+  restaurantData[id]['info']['zip'] = restaurant.zip
+  restaurantData[id]['info']['city'] = restaurant.city;
   restaurantData[id]['info']['open'] = '';
 
 	var saved = isRestaurantSaved(id);
@@ -296,12 +305,19 @@ $(document).ready(function(){
 			var restaurants = allRestaurants[city][area];
 			restaurants.forEach(function(restaurant) {
 				var savedId = getLetterForType(restaurant.type) + restaurant.id;
-					var saved = getSavedClass(savedId);
+				var saved = getSavedClass(savedId);
+				if (isRestaurantSaved(savedId)) {
+					noSelections = false;
+				}
 
 				createEmptyRestaurantData(savedId, restaurant, area, city);
 				addButtonsForRestaurant(savedId, restaurant.name, restaurant.type, saved, city, area);
 			});
 		}
+	}
+
+	if (noSelections) {
+		$( "#menu" ).append( '<div id="empty-notification"><br /><p>Click <b>Settings</b> to add restaurants so that they show up here.</p></div>' );
 	}
 
 	tabby.init();

@@ -12,14 +12,14 @@ var restaurantData = {};
 var allRestaurants = {
 	"helsinki": {
     "arabia": [
-      {"type":"amica", "id":3003, "name":"Arcada", "address":"Jan-Magnus Janssonin aukio 1", "zip":"00550", "city":"Helsinki"},
-      {"type":"amica", "id":"0060", "name":"Meccala", "address":"Hämeentie 135 C 5 floor", "zip":"00560", "city":"Helsinki"},
-      {"type":"amica", "id":3007, "name":"Pop&Jazz Konservatorio Jamipaja", "address":"Arabiankatu 2 A", "zip":"00560", "city":"Helsinki"}
+      {"type":"amica", "id":3003, "name":"Arcada", "address":"", "zip":"", "city":""},
+      {"type":"amica", "id":"0060", "name":"Meccala", "address":"", "zip":"", "city":""},
+      {"type":"amica", "id":3007, "name":"Pop&Jazz Konservatorio Jamipaja", "address":"", "zip":"", "city":""}
     ],
 		"keskusta": [
-						{"type":"amica", "id":3089, "name":"Aalto kauppakorkeakoulu Rafla", "address":"Runeberginkatu 14-16", "zip":"00100", "city":"Helsinki"},
-						{"type":"amica", "id":3090, "name":"Aalto kauppakorkeakoulu Arkadia", "address":"Lapuankatu 2", "zip":"00100", "city":"Helsinki"},
-						{"type":"amica", "id":3091, "name":"Aalto Kauppakorkeakoulu Chydenia", "address":"Runeberginkatu 22-24", "zip":"00100", "city":"Helsinki"},
+						{"type":"amica", "id":3089, "name":"Aalto kauppakorkeakoulu / Rafla", "address":"", "zip":"", "city":""},
+						{"type":"amica", "id":3090, "name":"Aalto kauppakorkeakoulu Arkadia", "address":"", "zip":"", "city":""},
+						{"type":"amica", "id":3091, "name":"Aalto Kauppakorkeakoulu", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":5, "name":"Cafe Portaali", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":31, "name":"Gaudeamus Kirja & Kahvi", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":1, "name":"Metsätalo", "address":"", "zip":"", "city":""},
@@ -31,7 +31,7 @@ var allRestaurants = {
 						{"type":"unicafe", "id":30, "name":"Ravintola Domus", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":33, "name":"Ravintola Serpens", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":15, "name":"Soc&Kom", "address":"", "zip":"", "city":""},
-						{"type":"amica", "id":3406, "name":"Svenska Handelshögskolan", "address":"Arkadiankatu 22", "zip":"00100", "city":"Helsinki"},
+						{"type":"amica", "id":3406, "name":"Svenska Handelshögskolan", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":7, "name":"Topelias", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":8, "name":"Valtiotiede", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":29, "name":"Viola", "address":"", "zip":"", "city":""},
@@ -59,27 +59,27 @@ var allRestaurants = {
 					{"type":"unicafe", "id":24, "name":"Vanha Viertotie", "address":"", "zip":"", "city":""}
 				],
 		"muut": [
-					{"type":"amica", "id":2123, "name":"Alppica, Helsingin Diakonissalaitoksen Säätiö", "address":"Alppikatu 2", "zip":"00530", "city":"Helsinki"},
-					{"type":"amica", "id":3140, "name":"Diakonia-AMK", "address":"Sturenkatu 2", "zip":"00510", "city":"Helsinki"},
-					{"type":"amica", "id":3147, "name":"Edupoli Herttoniemi", "address":"Lämmittäjänkatu 2 A", "zip":"00880", "city":"Helsinki"},
-					{"type":"amica", "id":3067, "name":"Teatterikorkeakoulu", "address":"Haapaniemenkatu 6", "zip":"00530", "city":"Helsinki"},
+					{"type":"amica", "id":2123, "name":"Alppica, Helsingin Diakonissalaitoksen Säätiö", "address":"", "zip":"", "city":""},
+					{"type":"amica", "id":3140, "name":"Diakonia-AMK", "address":"", "zip":"", "city":""},
+					{"type":"amica", "id":3147, "name":"Edupoli Herttoniemi", "address":"", "zip":"", "city":""},
+					{"type":"amica", "id":3067, "name":"Teatterikorkeakoulu", "address":"", "zip":"", "city":""},
 				],
     "pasila": [
-          {"type":"amica", "id":"0084", "name":"Helia Bistro. Opetustalo", "address":"Ratapihantie 13", "zip":"00520", "city":"Helsinki"},
-          {"type":"amica", "id":"0083", "name":"Opetustalo / Pääraide", "address":"Rautatieläisenkatu 5", "zip":"00520", "city":"Helsinki"}
+          {"type":"amica", "id":"0084", "name":"Helia Bistro. Opetustalo", "address":"", "zip":"", "city":""},
+          {"type":"amica", "id":"0083", "name":"Opetustalo / Pääraide", "address":"", "zip":"", "city":""}
         ],
 		"viikki": [
 						{"type":"unicafe", "id":16, "name":"Biokeskus", "address":"", "zip":"", "city":""},
-						{"type":"amica", "id":"0061", "name":"HY Eläinlääketieteenlaitos", "address":"Koetilantie 7", "zip":"00790", "city":"Helsinki"},
+						{"type":"amica", "id":"0061", "name":"HY Eläinlääketieteenlaitos", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":17, "name":"Korona", "address":"", "zip":"", "city":""},
 						{"type":"unicafe", "id":18, "name":"Viikuna", "address":"", "zip":"", "city":""},
 				  ],
 		},
     "espoo": {
       "otaniemi": [
-          {"type":"amica", "id":"0199", "name": "Aalto, TUAS", "address":"Otaniementie 17", "zip":"02150", "city":"Espoo"},
-          {"type":"amica", "id":"0191", "name": "Kvarkki", "address":"Otakaari 3", "zip":"02150", "city":"Espoo"},
-          {"type":"amica", "id":3292, "name": "Laurea AMK, Otaniemi", "address":"Metsänpojankuja 3", "zip":"02130", "city":"Espoo"},
+          {"type":"amica", "id":"0199", "name": "Aalto, TUAS", "address":"", "zip":"", "city":""},
+          {"type":"amica", "id":"0191", "name": "Kvarkki", "address":"", "zip":"", "city":""},
+          {"type":"amica", "id":3292, "name": "Laurea AMK, Otaniemi", "address":"", "zip":"", "city":""},
         ]
     },
 		//"lappeenranta": {

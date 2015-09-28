@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -24,7 +24,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -47,8 +47,17 @@ table {
 	border-spacing: 0;
 }
 
+/*! Tabby v9.0.0 | (c) 2015 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/tabby */
+/*!
+ * Tabby v9.0.0: Simple, mobile-first toggle tabs.
+ * (c) 2015 Chris Ferdinandi
+ * MIT License
+ * http://github.com/cferdinandi/tabby
+ */.tabs{display:none;visibility:hidden}.js-tabby .tabs{visibility:visible}.tabs a,.tabs button{cursor:pointer}.js-tabby .tabs-pane{display:none;visibility:hidden}.tabs-pane.active{display:block;visibility:visible}.tabs:after,.tabs:before{display:table;content:""}.tabs:after{clear:both}
 
-/* CAFE */
+
+
+/* UNIMENU */
 
 html, body {
 	width: 100%;
@@ -77,8 +86,58 @@ a:hover {
 	text-decoration: none;
 }
 
+i {
+	font-style: italic;
+}
 
-/* ---- */
+b {
+	font-weight: bold;
+}
+
+.capitalize {
+	text-transform: capitalize;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.5;
+	margin: 10px 0 0;
+}
+
+/* TABS */
+
+.tabs-content {
+	padding: 0 15px;
+}
+
+ul.tabs {
+	display: table;
+	width: 100%;
+	margin-top: 2px;
+}
+
+ul.tabs li {
+  display: table-cell;
+}
+
+ul.tabs li a {
+	background-color: #eee;
+  width: 94%;
+  padding: 10px;
+  margin: 5px 3%;
+  box-sizing: border-box;
+  display: block;
+  font-weight: bold;
+  font-size: 90%;
+  color: #9B9B9B;
+	text-align: center;
+}
+
+ul.tabs li a.active {
+	color: #444;
+}
+
 
 .cb {
 	width: 100%;
@@ -94,15 +153,26 @@ nav {
 }
 
 h1 {
-	float: left;
 	padding: 28px 20px;
 	font-size: 24px;
 	line-height: 26px;
 	font-weight: 300;
 }
 
+.site-title {
+	float: left;
+}
+
 h1 span {
 	font-weight: 400;
+}
+
+h2 {
+  font-size: 20px;
+  display: block;
+  margin: 0 0 10px;
+  border-bottom: 3px solid #eee;
+  padding: 0 0 7px;
 }
 
 ul#area {
@@ -128,7 +198,7 @@ ul#area li a:hover {
 
 .container {
 	padding: 0;
-	margin: 0 auto;
+	margin: 0 auto 10px;
 	max-width: 1200px;
 }
 
@@ -138,16 +208,30 @@ ul#area li a:hover {
 	display: none;
 }
 
-#info {
+#list {
 	background-color: #f8f8f8;
 }
 
-#info .container {
-	padding: 20px;
+#list .container {
+	padding: 10px;
 }
 
-#nav {
-	display: none;
+#nav .city h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 5px solid #eee;
+  padding: 10px 0 3px;
+  margin: 12px 5px -5px;
+	font-size: 14px;
+}
+
+#nav .city h3 {
+  text-transform: capitalize;
+  font-weight: bold;
+  border-bottom: 3px solid #eee;
+  padding: 12px 0 5px;
+  margin: 5px;
+	cursor: pointer;
 }
 
 
@@ -157,10 +241,9 @@ ul#area li a:hover {
 	background-color: #fff;
 	border: 2px solid rgb(0,190,210);
 	display: inline-block;
-	padding: 11px;
+	padding: 5px 10px;
 	border-radius: 5px;
-	text-transform: uppercase;
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: 600;
 }
 
@@ -178,6 +261,9 @@ ul#area li a:hover {
 	margin: 4px;
 }
 
+.restaurant-list {
+	display: none;
+}
 
 #menu .restaurant {
     padding: 20px 20px 10px;
@@ -206,9 +292,6 @@ ul#area li a:hover {
 	padding: 3px 0;
 }
 
-.colors {
-	float: right;
-}
 
 div.color {
 	border: 3px solid #ccc;
@@ -241,8 +324,6 @@ div.Makeasti {
 }
 
 .colors {
-	float: right;
-	text-align: right;
 	line-height: 22px;
 }
 .colors .color {
@@ -276,10 +357,11 @@ li.date {
 
 li.title {
 	font-weight: bold;
-    padding: 2px 0 5px;
+	padding: 2px 0 5px;
 	font-size: 20px;
 	line-height: 28px;
 	border-bottom: 2px solid #eee;
+	cursor: pointer;
 }
 
 .not-today {
@@ -303,9 +385,9 @@ li.title {
 #settings .menu-url {
 	color: #eee;
 	display: inline-block;
-	float: left;
-    padding: 4px 7px;
-    margin: 9px 9px 0 0;
+  padding: 5px 10px;
+	font-size: 12px;
+  margin: 9px 9px 0 0;
 	border-radius: 5px;
 	border: 3px solid rgb(94, 94, 94);
 }
@@ -318,24 +400,60 @@ li.title {
 	background-color: #464852;
 }
 
+#settings, #list {
+	margin: 0 -15px;
+}
 
 #settings {
 	background-color: #333;
 	color: #eee;
-	display: none;
 	padding: 15px;
+}
+
+#settings p {
+  padding-top: 10px;
+  font-size: 12px;
+  color: #878787;
+}
+
+#settings .area {
+	clear: both;
+}
+
+
+#info p i {
+	white-space: nowrap;
+}
+
+#settings .city h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 5px solid #484848;
+  padding: 10px 0 3px;
+  margin: 10px 5px -5px;
+	font-size: 14px;
+}
+
+#settings .city h3 {
+	text-transform: capitalize;
+  font-weight: normal;
+  border-bottom: 3px solid #484848;
+  padding: 12px 0 6px;
+  margin: 5px;
+  color: #DCDCDC;
+	cursor: pointer;
 }
 
 /*--PHONE--*/
 @media (max-width: 767px) {
 	#menu .restaurant {
-		float: none;
-		padding: 3% 3% 0 3%;
-		width: 94%;
-		max-width: 100%;
+    float: none;
+    padding: 5px 0 10px;
+    width: 100%;
+    max-width: 100%;
 	}
 	nav h1 {
-		padding: 10px 20px;
+		padding: 5px 20px 13px;
 	}
 	ul#area {
 		padding: 0 20px 20px;
@@ -353,9 +471,6 @@ li.title {
 		margin-top: 5px;
 		float: none;
 		text-align: left;
-	}
-	.menu-toggleable {
-		display: none;
 	}
 	.toggle-button {
 		display: block;
