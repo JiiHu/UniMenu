@@ -148,7 +148,6 @@ ul.tabs li a.active {
 nav {
   color: #fff;
   width: 100%;
-  padding-top: 5px;
   background-color: rgb(0,190,210);
 }
 
@@ -199,7 +198,6 @@ ul#area li a:hover {
 .container {
   padding: 0;
   margin: 0 auto 10px;
-  max-width: 1200px;
 }
 
 .today-button {
@@ -229,7 +227,7 @@ ul#area li a:hover {
   text-transform: capitalize;
   font-weight: bold;
   border-bottom: 3px solid #eee;
-  padding: 12px 0 5px;
+  padding: 8px 0 10px;
   margin: 5px;
   cursor: pointer;
 }
@@ -487,7 +485,7 @@ footer p {
     max-width: 100%;
   }
   nav h1 {
-    padding: 5px 20px 13px;
+    padding: 10px 20px 13px;
   }
   ul#area {
     padding: 0 20px 20px;
