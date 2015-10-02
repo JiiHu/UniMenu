@@ -16,35 +16,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /*! Tabby v9.0.0 | (c) 2015 Chris Ferdinandi | MIT License | http://github.com/cferdinandi/tabby */
@@ -60,20 +60,20 @@ table {
 /* UNIMENU */
 
 html, body {
-	width: 100%;
-	height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 body {
-	font-size: 14px;
-	line-height: 20px;
-	font-family: 'Open Sans', sans-serif;
-	color: #555;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
 }
 
 a {
-	text-decoration: none;
-	color: #444;
+  text-decoration: none;
+  color: #444;
     -webkit-transition: all .15s ease-in-out;
     transition: all .15s ease-in-out;
 }
@@ -83,38 +83,38 @@ a:active {
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 i {
-	font-style: italic;
+  font-style: italic;
 }
 
 b {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .capitalize {
-	text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 h4 {
   font-weight: bold;
   font-size: 15px;
   line-height: 1.5;
-	margin: 10px 0 0;
+  margin: 10px 0 0;
 }
 
 /* TABS */
 
 .tabs-content {
-	padding: 0 15px;
+  padding: 0 15px;
 }
 
 ul.tabs {
-	display: table;
-	width: 100%;
-	margin-top: 2px;
+  display: table;
+  width: 100%;
+  margin-top: 2px;
 }
 
 ul.tabs li {
@@ -122,7 +122,7 @@ ul.tabs li {
 }
 
 ul.tabs li a {
-	background-color: #eee;
+  background-color: #eee;
   width: 94%;
   padding: 10px;
   margin: 5px 3%;
@@ -131,40 +131,40 @@ ul.tabs li a {
   font-weight: bold;
   font-size: 90%;
   color: #9B9B9B;
-	text-align: center;
+  text-align: center;
 }
 
 ul.tabs li a.active {
-	color: #444;
+  color: #444;
 }
 
 
 .cb {
-	width: 100%;
-	clear: both;
-	height: 1px;
+  width: 100%;
+  clear: both;
+  height: 1px;
 }
 
 nav {
-	color: #fff;
-	width: 100%;
-	padding-top: 5px;
-	background-color: rgb(0,190,210);
+  color: #fff;
+  width: 100%;
+  padding-top: 5px;
+  background-color: rgb(0,190,210);
 }
 
 h1 {
-	padding: 28px 20px;
-	font-size: 24px;
-	line-height: 26px;
-	font-weight: 300;
+  padding: 28px 20px;
+  font-size: 24px;
+  line-height: 26px;
+  font-weight: 300;
 }
 
 .site-title {
-	float: left;
+  float: left;
 }
 
 h1 span {
-	font-weight: 400;
+  font-weight: 400;
 }
 
 h2 {
@@ -176,44 +176,44 @@ h2 {
 }
 
 ul#area {
-	padding: 20px;
-	float: right;
-	list-style:none;
+  padding: 20px;
+  float: right;
+  list-style:none;
 }
 ul#area li {
-	list-style: none;
-	display: inline-block;
+  list-style: none;
+  display: inline-block;
 }
 ul#area li a {
-	padding: 10px 15px;
-	background-color: #fff;
-	border-radius: 4px;
-	margin: 0 5px;
-	border: 2px solid #fff;
-	display: inline-block;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0 5px;
+  border: 2px solid #fff;
+  display: inline-block;
 }
 ul#area li a:hover {
-	border: 2px solid rgb(0,190,210);
+  border: 2px solid rgb(0,190,210);
 }
 
 .container {
-	padding: 0;
-	margin: 0 auto 10px;
-	max-width: 1200px;
+  padding: 0;
+  margin: 0 auto 10px;
+  max-width: 1200px;
 }
 
 .today-button {
-	border: 2px solid rgb(0,190,210);
-	padding: 5px;
-	display: none;
+  border: 2px solid rgb(0,190,210);
+  padding: 5px;
+  display: none;
 }
 
 #list {
-	background-color: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 #list .container {
-	padding: 10px;
+  padding: 10px;
 }
 
 #nav .city h2 {
@@ -222,7 +222,7 @@ ul#area li a:hover {
   border-bottom: 5px solid #eee;
   padding: 10px 0 3px;
   margin: 12px 5px -5px;
-	font-size: 14px;
+  font-size: 14px;
 }
 
 #nav .city h3 {
@@ -231,38 +231,38 @@ ul#area li a:hover {
   border-bottom: 3px solid #eee;
   padding: 12px 0 5px;
   margin: 5px;
-	cursor: pointer;
+  cursor: pointer;
 }
 
 
 
 .button,
 #nav a {
-	background-color: #fff;
-	border: 2px solid rgb(0,190,210);
-	display: inline-block;
-	padding: 5px 10px;
-	border-radius: 5px;
-	font-size: 12px;
-	font-weight: 600;
+  background-color: #fff;
+  border: 2px solid rgb(0,190,210);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 #nav a.amica {
-	background-color: #E4E8F2;
+  background-color: #E4E8F2;
 }
 
 .button:hover,
 #nav a:hover {
-	border-color: rgb(0,190,210);
-	display: inline-block;
+  border-color: rgb(0,190,210);
+  display: inline-block;
 }
 
 #nav a {
-	margin: 4px;
+  margin: 4px;
 }
 
 .restaurant-list {
-	display: none;
+  display: none;
 }
 
 #menu .restaurant {
@@ -273,141 +273,146 @@ ul#area li a:hover {
 }
 
 .toggle-button {
-	font-size: 32px;
-	display: none;
-	float: right;
+  font-size: 32px;
+  display: none;
+  float: right;
 }
 
 .visible {
-	display: block !important;
+  display: block !important;
 }
 
 #menu li {
-	line-height: 1.4;
-	min-width: 200px;
+  line-height: 1.4;
+  min-width: 200px;
 }
 
 #menu li.food {
-	margin: 0;
-	padding: 3px 0;
+  margin: 0;
+  padding: 3px 0;
 }
 
 
 div.color {
-	border: 3px solid #ccc;
-	margin: 0 5px 0 0;
-	height: 6px;
-	width: 6px;
-	display: inline-block;
-	border-radius: 6px;
+  border: 3px solid #ccc;
+  margin: 0 5px 0 0;
+  height: 6px;
+  width: 6px;
+  display: inline-block;
+  border-radius: 6px;
 }
 
 div.Bistro {
-	border-color: #444;
+  border-color: #444;
 }
 
 div.Maukkaasti {
-	border-color: rgb(195, 0, 52);
-	background-color: rgb(195, 0, 52);
+  border-color: rgb(195, 0, 52);
+  background-color: rgb(195, 0, 52);
 }
 
 div.Edullisesti {
-	border-color: #0082cc;
+  border-color: #0082cc;
 }
 
 div.Kevyesti {
-	border-color: #0acc00;
+  border-color: #0acc00;
 }
 
 div.Makeasti {
-	border-color: #ff9898;
+  border-color: #ff9898;
 }
 
 .colors {
-	line-height: 22px;
+  line-height: 22px;
 }
 .colors .color {
-	margin: 0 0px 0 5px;
+  margin: 0 0px 0 5px;
 }
 .colors .category {
-	float: left; margin: 0 10px 0 0;
+  float: left; margin: 0 10px 0 0;
 }
 
 #menu li .nutrition,
 #menu li .ingredients {
-	font-size: 10px;
-	line-height: 12px;
-	margin-left: 15px;
-	display: none;
+  font-size: 10px;
+  line-height: 12px;
+  margin-left: 15px;
+  display: none;
 }
 
 ul.older {
-	display: none;
+  display: none;
 }
 
 ul.day li:last-child {
-	padding-bottom: 10px;
-	border-bottom: 2px solid #ff;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff;
 }
 
 li.date {
-	font-weight: bold;
-	padding-top: 10px;
+  font-weight: bold;
+  padding-top: 10px;
 }
 
 li.title {
-	font-weight: bold;
-	padding: 2px 0 5px;
-	font-size: 20px;
-	line-height: 28px;
-	border-bottom: 2px solid #eee;
-	cursor: pointer;
+  font-weight: bold;
+  padding: 2px 0 5px;
+  font-size: 20px;
+  line-height: 28px;
+  border-bottom: 2px solid #eee;
+  cursor: pointer;
 }
 
 .not-today {
-	display: none;
+  display: none;
 }
 
 #wrap {
-	min-height: 100%;
-	overflow: auto;
+  min-height: 100%;
+  overflow: auto;
+}
+
+.browser-wrap {
+  padding-bottom: 100px;
+  box-sizing: border-box;
 }
 
 #settings-button {
-	background-color: transparent;
-	margin-top: 2px;
-	display: block;
+  background-color: transparent;
+  margin-top: 2px;
+  display: block;
 }
 #settings-button:hover {
-	color: #fff;
+  color: #fff;
 }
 
 #settings .menu-url {
-	color: #eee;
-	display: inline-block;
+  color: #eee;
+  display: inline-block;
   padding: 5px 10px;
-	font-size: 12px;
+  font-size: 12px;
   margin: 9px 9px 0 0;
-	border-radius: 5px;
-	border: 3px solid rgb(94, 94, 94);
+  border-radius: 5px;
+  border: 3px solid rgb(94, 94, 94);
 }
 #settings .menu-url.saved {
-	border-color: rgb(132, 255, 0);
+  border-color: rgb(132, 255, 0);
 }
 
 
 #settings .menu-url.amica {
-	background-color: #464852;
+  background-color: #464852;
 }
 
 #settings, #list {
-	margin: 0 -15px;
+  margin: 0 -15px;
 }
 
 #settings {
-	background-color: #333;
-	color: #eee;
-	padding: 15px;
+  background-color: #333;
+  color: #eee;
+  padding: 15px;
 }
 
 #settings p {
@@ -417,12 +422,12 @@ li.title {
 }
 
 #settings .area {
-	clear: both;
+  clear: both;
 }
 
 
 #info p i {
-	white-space: nowrap;
+  white-space: nowrap;
 }
 
 table td.abb {
@@ -438,50 +443,72 @@ table td.abb {
   border-bottom: 5px solid #484848;
   padding: 10px 0 3px;
   margin: 10px 5px -5px;
-	font-size: 14px;
+  font-size: 14px;
 }
 
 #settings .city h3 {
-	text-transform: capitalize;
+  text-transform: capitalize;
   font-weight: normal;
   border-bottom: 3px solid #484848;
   padding: 12px 0 6px;
   margin: 5px;
   color: #DCDCDC;
-	cursor: pointer;
+  cursor: pointer;
 }
+
+
+
+footer {
+  padding: 20px 30px 0;
+  margin-top: -100px;
+  min-height: 80px;
+  text-align: center;
+  color: #ccc;
+  background-color: #444;
+  font-size: 11px;
+}
+
+footer a {
+  color: #fff;
+}
+footer p {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+
 
 /*--PHONE--*/
 @media (max-width: 767px) {
-	#menu .restaurant {
+  #menu .restaurant {
     float: none;
     padding: 5px 0 10px;
     width: 100%;
     max-width: 100%;
-	}
-	nav h1 {
-		padding: 5px 20px 13px;
-	}
-	ul#area {
-		padding: 0 20px 20px;
-	}
-	ul#area li a {
-		padding: 8px 11px;
-		margin: 5px 5px;
-	}
-	.button {
-		padding: 8px;
-		margin: 3px;
-		font-size: 12px;
-	}
-	.colors {
-		margin-top: 5px;
-		float: none;
-		text-align: left;
-	}
-	.toggle-button {
-		display: block;
-	}
+  }
+  nav h1 {
+    padding: 5px 20px 13px;
+  }
+  ul#area {
+    padding: 0 20px 20px;
+  }
+  ul#area li a {
+    padding: 8px 11px;
+    margin: 5px 5px;
+  }
+  .button {
+    padding: 8px;
+    margin: 3px;
+    font-size: 12px;
+  }
+  .colors {
+    margin-top: 5px;
+    float: none;
+    text-align: left;
+  }
+  .toggle-button {
+    display: block;
+  }
 }
 
 

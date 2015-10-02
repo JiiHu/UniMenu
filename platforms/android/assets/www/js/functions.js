@@ -73,7 +73,7 @@ function getModalText(id) {
   }
 
   if (restaurantData[id]['info']['url'] != '') {
-    text += "<a target='_BLANK' href='"+restaurantData[id]['info']['url'] + "'>WWW</a>";
+    text += "<a target='_BLANK' href='"+restaurantData[id]['info']['url'] + "'>WWW</a> <br />";
   }
 
   if (restaurantData[id]['info']['address'] != '') {

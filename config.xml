@@ -2,7 +2,7 @@
 <widget id="com.unilunch.app" version="0.2.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>unimenu</name>
     <description>
-	An application which shows the menus of UniCafe restaurants.
+  An application which shows the menus of UniCafe restaurants.
     </description>
     <author email="play-store@huotari.me" href="http://huotari.me">
         Jonne Huotari

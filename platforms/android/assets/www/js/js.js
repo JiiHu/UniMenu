@@ -132,14 +132,32 @@ function restaurantIsFetched(id) {
 	}
 }
 
+function parseUnicafeMenu(data) {
 
+	$.each( data, function( key, food ) {
+		var meta = '';
+		if (!jQuery.isEmptyObject( food['meta'][0] )) {
+			meta += ' [';
+			$.each( food['meta'][0], function( key, val ) {
+				meta += val + ', ';
+			});
+			meta = meta.substring(0, meta.length - 2);
+			meta += "]";
+		};
+		// remove last comma
+
+		food['name'] = food['name'] + meta;
+	});
+
+	return data;
+}
 
 function getUnicafeRestaurant(id, fullId) {
 	var menus = {};
 	var url = unicafeApi + "restaurant/" + id;
 
 	$.getJSON(url, function( data ) {
-		var open = 'Open: ' + data['information']['lounas']['regular'][0]['open'];
+		var open = 'Regular open: ' + data['information']['lounas']['regular'][0]['open'];
 		open = open + " - " + data['information']['lounas']['regular'][0]['close'];
 
 		saveAddress(fullId, data['information']['address'], data['information']['zip'], data['information']['city']);
@@ -157,7 +175,7 @@ function getUnicafeRestaurant(id, fullId) {
 			day['menu'] = {};
 
 			if (!jQuery.isEmptyObject(this.data)) {
-				day['menu'] = this.data;
+				day['menu'] = parseUnicafeMenu(this.data);
 			}
 
 			menus[dateStripped] = day;

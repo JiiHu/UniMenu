@@ -425,6 +425,13 @@ li.title {
 	white-space: nowrap;
 }
 
+table td.abb {
+  padding-right: 15px;
+  font-weight: bold;
+  min-width: 55px;
+  text-align: right;
+}
+
 #settings .city h2 {
   text-transform: uppercase;
   font-weight: bold;
