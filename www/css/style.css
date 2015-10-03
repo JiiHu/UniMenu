@@ -220,7 +220,7 @@ ul#area li a:hover {
   border-bottom: 5px solid #eee;
   padding: 10px 0 3px;
   margin: 12px 5px -5px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 #nav .city h3 {
@@ -441,14 +441,14 @@ table td.abb {
   border-bottom: 5px solid #484848;
   padding: 10px 0 3px;
   margin: 10px 5px -5px;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 #settings .city h3 {
   text-transform: capitalize;
   font-weight: normal;
   border-bottom: 3px solid #484848;
-  padding: 12px 0 6px;
+  padding: 9px 0 9px;
   margin: 5px;
   color: #DCDCDC;
   cursor: pointer;
