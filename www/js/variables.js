@@ -91,10 +91,23 @@ var allRestaurants = {
           {"type":"unicafe", "id":22, "name":"Onnentie", "address":"", "zip":"", "city":""},
         ]
     },
+    "tampere": {
+      "hervanta": [
+          {"type":"amica", "id":"0812", "name":"Reaktori", "address":"Korkeakoulunkatu 7, 2krs", "zip":"33720", "city":"Tampere"},
+        ],
+      "keskusta": [
+          {"type":"amica", "id":"0871", "name":"Huugo", "address":"Pyynikintie 2", "zip":"33230", "city":"Tampere"},
+          {"type":"amica", "id":"0815", "name":"Minerva", "address":"Kanslerinrinne 1", "zip":"33100", "city":"Tampere"},
+        ],
+      "muut": [
+          {"type":"amica", "id":"0823", "name":"Pirteria", "address":"Kuntokatu 4", "zip":"33520", "city":"Tampere"},
+          {"type":"amica", "id":"0808", "name":"Kauppis", "address":"Sammonkatu 45", "zip":"33540", "city":"Tampere"},
+        ],
+    },
     "lappeenranta": {
       "keskusta": [
-            {"type":"amica", "id":3348, "name":"Anselmi", "address":"Armilankatu 40", "zip":"53100", "city":"Lappeenranta"},
-            {"type":"amica", "id":3347, "name":"Santeri", "address":"Pohjolankatu 10", "zip":"53100", "city":"Lappeenranta"},
-          ]
-    }
+          {"type":"amica", "id":3348, "name":"Anselmi", "address":"Armilankatu 40", "zip":"53100", "city":"Lappeenranta"},
+          {"type":"amica", "id":3347, "name":"Santeri", "address":"Pohjolankatu 10", "zip":"53100", "city":"Lappeenranta"},
+        ]
+    },
   };

@@ -133,10 +133,10 @@ function parseUnicafeMenu(data) {
       $.each( food['meta'][0], function( key, val ) {
         meta += val + ', ';
       });
+      // remove last comma
       meta = meta.substring(0, meta.length - 2);
       meta += "]";
     };
-    // remove last comma
 
     food['name'] = food['name'] + meta;
   });
@@ -171,7 +171,6 @@ function getUnicafeRestaurant(id, fullId) {
       }
 
       menus[dateStripped] = day;
-
       restaurantData[fullId]['days'] = menus;
     });
 
