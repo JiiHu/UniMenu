@@ -77,6 +77,7 @@ a {
     -webkit-transition: all .15s ease-in-out;
     transition: all .15s ease-in-out;
 }
+
 a:active {
     -webkit-transform: scale3d(0.8, 0.8, 1);
     transition: all .15s ease-in-out;
@@ -84,6 +85,14 @@ a:active {
 
 a:hover {
   text-decoration: none;
+}
+
+a.link {
+  padding: 5px 10px;
+  border: 3px solid #ddd;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 4px;
 }
 
 i {
@@ -136,6 +145,15 @@ ul.tabs li a {
 
 ul.tabs li a.active {
   color: #444;
+}
+
+ul.tabs.dark-tabs li a {
+  background-color: #555;
+  color: #bbb;
+}
+
+ul.tabs.dark-tabs li a.active {
+  color: #ddd;
 }
 
 
@@ -408,6 +426,7 @@ li.title {
 }
 
 #settings {
+  min-height: 250px;
   background-color: #333;
   color: #eee;
   padding: 15px;
@@ -452,6 +471,13 @@ table td.abb {
   margin: 5px;
   color: #DCDCDC;
   cursor: pointer;
+}
+
+#cities-menu a.menu-url {
+  border-radius: 0;
+  font-size: 14px;
+  text-transform: capitalize;
+  padding: 6px 13px;
 }
 
 

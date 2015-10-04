@@ -91,10 +91,10 @@ var allRestaurants = {
           {"type":"unicafe", "id":22, "name":"Onnentie", "address":"", "zip":"", "city":""},
         ]
     },
-    //"lappeenranta": {
-    //	"keskusta": [
-    //				{"type":"amica", "id":3348, "name":"Anselmi"}
-    //				{"type":"amica", "id":3347, "name":"Santeri"}
-    //			]
-    //}
+    "lappeenranta": {
+      "keskusta": [
+            {"type":"amica", "id":3348, "name":"Anselmi", "address":"Armilankatu 40", "zip":"53100", "city":"Lappeenranta"},
+            {"type":"amica", "id":3347, "name":"Santeri", "address":"Pohjolankatu 10", "zip":"53100", "city":"Lappeenranta"},
+          ]
+    }
   };

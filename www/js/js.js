@@ -2,42 +2,7 @@
 var today = getTodayInUnicafeFormat();
 
 
-$(document).on('click', "#nav a.menu-url", function(e){
-  e.preventDefault();
-  var id = $(this).attr('id-value');
-  toggleRestaurant(id);
-});
 
-$(document).on('click', "#settings-menu a.menu-url", function(e){
-  e.preventDefault();
-  var id = $(this).attr('id-value');
-  toggleRestaurantSaveState(id);
-  toggleRestaurant(id);
-});
-
-$(document).on('click', "a.button", function(e){
-  e.preventDefault();
-});
-
-$(document).on('click', "#settings-button", function(e){
-  $("#settings").slideToggle(speed);
-});
-
-$(document).on('click', "a.restaurant-button", function(e){
-  $("#nav").slideToggle(speed);
-});
-
-$(document).on('click', ".area h3", function(e){
-  var parent = $(this).parent();
-  parent.toggleClass('open');
-  parent.find('.restaurant-list').toggle(0);
-});
-
-$(document).on('click', "li.title", function(e){
-  var fullId = $(this).parent().parent().attr('id');
-
-  showModal(fullId);
-});
 
 
 
@@ -86,8 +51,6 @@ function generateHtmlForRestaurantDay(dayObject) {
 }
 
 
-
-
 function toggleRestaurantSaveState(id) {
   if (isRestaurantSaved(id)) {
     window.localStorage.removeItem(id);
@@ -105,7 +68,36 @@ function isRestaurantSaved(id) {
   return true;
 }
 
+function hasUserSelectedCities() {
+  var value = window.localStorage.getItem('citiesSelected');
+  if (value == null) {
+    return false;
+  }
+  return true;
+}
 
+function isCitySaved(city) {
+    var value = window.localStorage.getItem('city-' + city);
+    if (value == null) {
+      return false;
+    }
+    return true;
+}
+
+
+function toggleCitySaveState(city) {
+  window.localStorage.setItem('citiesSelected', true);
+
+  if (isCitySaved(city)) {
+    window.localStorage.removeItem('city-'+city);
+    removeCityFromNavs(city);
+  } else {
+    window.localStorage.setItem('city-'+city, true);
+    addCityAndAllItsAreasToNavs(city);
+  }
+
+  $("#cities-menu ."+city).toggleClass("saved");
+}
 
 
 function getSavedClass(id) {
@@ -293,32 +285,78 @@ function addAreaToNavs(city, area) {
   $( "#settings-menu ." + city ).append( html );
 }
 
-function appendShellitFooterIfBrowser() {
-  var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
 
-  if (!app) {
-    var html = '<footer><p>Hosted by<br /><a href="http://www.shellit.org/"><img src="img/shellit.png" alt="Shellit.org"></a></p><p><a href="https://play.google.com/store/apps/details?id=com.unilunch.app"><img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" /></a></p></footer>';
-    $( html ).insertAfter( '#wrap' );
-    $( '#wrap' ).addClass('browser-wrap');
-
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-35797786-3', 'auto');
-    ga('send', 'pageview');
+function isCitySelected(city) {
+  if (!hasUserSelectedCities()) {
+    if (city == 'helsinki' || city == 'vantaa' || city == 'espoo') {
+      return true;
+    }
+    return false;
   }
 
+  if (isCitySaved(city)) {
+    return true;
+  }
+  return false;
 }
 
+
+
+function addCityToSettings(city) {
+  var saved = '';
+  if (isCitySelected(city)) {
+    saved = ' saved';
+  }
+
+  var html = "<a href='#' id-value='" + city + "' class='menu-url " + city + saved + "'>" + city + "</a>";
+  $( "#cities-menu" ).append( html );
+}
+
+
+function removeCityFromNavs(city) {
+  $('.city.'+city).remove();
+}
+
+function addCityAndAllItsAreasToNavs(city) {
+  addCityToNavs(city);
+  for (var area in allRestaurants[city]) {
+    addAreaToNavs(city, area);
+
+    var restaurants = allRestaurants[city][area];
+    restaurants.forEach(function(restaurant) {
+      var savedId = getLetterForType(restaurant.type) + restaurant.id;
+      var saved = getSavedClass(savedId);
+
+      createEmptyRestaurantData(savedId, restaurant, area, city);
+      addButtonsForRestaurant(savedId, restaurant.name, restaurant.type, saved, city, area);
+    });
+  }
+}
+
+function checkIfUserHasDoneCitySelections() {
+  if ( !hasUserSelectedCities() ) {
+    window.localStorage.setItem('city-helsinki', true);
+    window.localStorage.setItem('city-vantaa', true);
+    window.localStorage.setItem('city-espoo', true);
+  }
+}
+
+
 $(document).ready(function(){
+  checkIfUserHasDoneCitySelections();
 
   for (var city in allRestaurants) {
-    addCityToNavs(city);
+    addCityToSettings(city);
+
+    var cityVisible = isCitySelected(city);
+    if (cityVisible) {
+      addCityToNavs(city);
+    }
 
     for (var area in allRestaurants[city]) {
-      addAreaToNavs(city, area);
+      if (cityVisible) {
+        addAreaToNavs(city, area);
+      }
 
       var restaurants = allRestaurants[city][area];
       restaurants.forEach(function(restaurant) {
@@ -335,11 +373,57 @@ $(document).ready(function(){
   }
 
   if (noSelections) {
-    $( "#menu" ).append( '<div id="empty-notification"><br /><p>Click <b>Settings</b> to add restaurants so that they show up here.</p></div>' );
+    $( "#menu" ).append( '<div id="empty-notification"><br /><p>Avaa <b>Asetukset</b> lisätäksesi ravintoloita niin että ne näkyvät tällä sivulla automaattisesti. <i>Asetuksista</i> voit myös valita mitkä kaupungit ovat näkyvissä.</p></div>' );
   }
 
   tabby.init();
 
   appendShellitFooterIfBrowser();
 
+});
+
+
+
+
+$(document).on('click', "#nav a.menu-url", function(e){
+  e.preventDefault();
+  var id = $(this).attr('id-value');
+  toggleRestaurant(id);
+});
+
+$(document).on('click', "#settings-menu a.menu-url", function(e){
+  e.preventDefault();
+  var id = $(this).attr('id-value');
+  toggleRestaurantSaveState(id);
+  toggleRestaurant(id);
+});
+
+$(document).on('click', "#cities-menu a.menu-url", function(e){
+  e.preventDefault();
+  var city = $(this).attr('id-value');
+  toggleCitySaveState(city);
+});
+
+$(document).on('click', "a.button", function(e){
+  e.preventDefault();
+});
+
+$(document).on('click', "#settings-button", function(e){
+  $("#settings").slideToggle(speed);
+});
+
+$(document).on('click', "a.restaurant-button", function(e){
+  $("#nav").slideToggle(speed);
+});
+
+$(document).on('click', ".area h3", function(e){
+  var parent = $(this).parent();
+  parent.toggleClass('open');
+  parent.find('.restaurant-list').toggle(0);
+});
+
+$(document).on('click', "li.title", function(e){
+  var fullId = $(this).parent().parent().attr('id');
+
+  showModal(fullId);
 });
