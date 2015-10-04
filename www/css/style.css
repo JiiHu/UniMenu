@@ -244,8 +244,8 @@ ul#area li a:hover {
 #nav .city h3 {
   text-transform: capitalize;
   font-weight: bold;
-  border-bottom: 3px solid #eee;
-  padding: 8px 0 10px;
+  border-top: 3px solid #eee;
+  padding: 12px 0 6px;
   margin: 5px;
   cursor: pointer;
 }
@@ -263,9 +263,6 @@ ul#area li a:hover {
   font-weight: 600;
 }
 
-#nav a.amica {
-  background-color: #E4E8F2;
-}
 
 .button:hover,
 #nav a:hover {
@@ -417,9 +414,6 @@ li.title {
 }
 
 
-#settings .menu-url.amica {
-  background-color: #464852;
-}
 
 #settings, #list {
   margin: 0 -15px;
@@ -466,8 +460,8 @@ table td.abb {
 #settings .city h3 {
   text-transform: capitalize;
   font-weight: normal;
-  border-bottom: 3px solid #484848;
-  padding: 9px 0 9px;
+  border-top: 3px solid #484848;
+  padding: 12px 0 6px;
   margin: 5px;
   color: #DCDCDC;
   cursor: pointer;
