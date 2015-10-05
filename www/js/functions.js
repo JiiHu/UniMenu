@@ -51,6 +51,13 @@ function convertAmicaDateToUnicafeFormat(amica) {
   return converted;
 }
 
+function convertLutDateToUnicafeFormat(day) {
+  var converted = day.substr(8, 2) + ".";
+  converted += day.substr(5, 2);
+  
+  return converted;
+}
+
 function getDayForSodexoApi() {
   var today = new Date();
   var dd = today.getDate();
@@ -78,6 +85,9 @@ function getLetterForType(type) {
   }
   if (type == 'sodexo') {
     return 's';
+  }
+  if (type == 'lut') {
+    return 'l';
   }
   return '';
 }
@@ -119,6 +129,24 @@ function saveAddress(fullId, address, zip, city) {
   restaurantData[fullId]['info']['address'] = address;
   restaurantData[fullId]['info']['zip'] = zip;
   restaurantData[fullId]['info']['city'] = city;
+}
+
+function convertLutNameToId(name) {
+  if (name == 'ylioppilastalo') {
+    return 'l1';
+  } else if (name == 'kurniekka') {
+    return 'l2';
+  } else if (name == 'amk') {
+    return 'l3';
+  } else if (name == '6-vaihe') {
+    return 'l4';
+  } else if (name == 'yliopisto') {
+    return 'l5';
+  } else if (name == 'skykahvila') {
+    return 'l6';
+  }
+
+  return '';
 }
 
 

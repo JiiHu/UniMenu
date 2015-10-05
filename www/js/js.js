@@ -248,6 +248,64 @@ function getSodexoRestaurant(sodexoRestaurant, fullId) {
   });
 }
 
+function getMenuForLutRestaurant(foods) {
+  var menus = [];
+
+  foods.forEach(function(single) {
+    var hash = {};
+    hash['price'] = '';
+
+    var diet = '';
+    if(typeof single['diet'] !== "undefined" && single['diet'] != '') {
+      diet = " [" + single['diet'] + "]";
+    }
+
+    var foodList = '';
+    foodList += single['title_fi'] + diet + "<br />";
+    hash['name'] = foodList;
+    menus.push(hash);
+  });
+  return menus;
+}
+
+
+function getAllLutRestaurants(sodexoRestaurant, fullId) {
+  if(lutAreFetched) {
+    if (restaurantData[fullId]['loaded']) {
+      restaurantIsFetched(fullId);
+    }
+    return;
+  }
+  lutAreFetched = true;
+
+  $.getJSON(lutApi, function( data ) {
+    $.each(data, function(name, value) {
+      var lutId = convertLutNameToId(name);
+      restaurantData[lutId]['info']['url'] = value['link'];
+      restaurantData[lutId]['loading'] = false;
+      restaurantData[lutId]['loaded'] = true;
+
+      $.each(value['days'], function(day, dayMenu) {
+        var date = convertLutDateToUnicafeFormat(day);
+        var isInPast = dateIsOlder(today, date);
+        var menuIsForToday = dateIsToday(today, date);
+
+        var day = {};
+        day['date'] = date;
+        day['past'] = isInPast;
+        day['today'] = menuIsForToday;
+        day['menu'] = getMenuForLutRestaurant(dayMenu['foods']);
+
+        restaurantData[lutId]['days'][date] = day;
+      });
+
+      if (restaurantData[lutId]['saved']) {
+        restaurantIsFetched(lutId);
+      }
+    });
+  });
+}
+
 
 
 function fetchMenu(id) {
@@ -265,6 +323,8 @@ function fetchMenu(id) {
     getAmicaRestaurant(restaurantId, id);
   } else if (abbreviation == 's') {
     getSodexoRestaurant(restaurantId, id);
+  } else if (abbreviation == 'l') {
+    getAllLutRestaurants(restaurantId, id);
   }
 }
 
