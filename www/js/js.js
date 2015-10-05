@@ -2,10 +2,6 @@
 var today = getTodayInUnicafeFormat();
 
 
-
-
-
-
 function toggleRestaurant(id) {
   if (restaurantData[id]['visible']) {
     restaurantData[id]['visible'] = false;
@@ -219,6 +215,39 @@ function getAmicaRestaurant(amicaRestaurant, fullId) {
   });
 }
 
+function getSodexoRestaurant(sodexoRestaurant, fullId) {
+  var sodexoUrl = unimenuFw + sodexoApiStart + sodexoRestaurant + getDayForSodexoApi() + sodexoApiEnd;
+  $.getJSON(sodexoUrl, function( data ) {
+    restaurantData[fullId]['info']['url'] = data['meta']['ref_url'];
+
+    // currently sodexo api retrieves only today
+    var day = {};
+    var date = today;
+    day['date'] = date;
+    day['past'] = false;
+    day['today'] = true;
+    var menus = [];
+    data['courses'].forEach(function(food) {
+      var name = food['title_fi'];
+
+      if (typeof food['properties'] !== "undefined") {
+         name += " [" + food['properties'] + "]"
+      }
+
+      var currentFood = {
+        'name':name,
+        'price':'sodexo'
+      };
+      menus.push(currentFood);
+    });
+    day['menu'] = menus;
+
+    restaurantData[fullId]['days'][date] = day;
+
+    restaurantIsFetched(fullId);
+  });
+}
+
 
 
 function fetchMenu(id) {
@@ -234,6 +263,8 @@ function fetchMenu(id) {
     getUnicafeRestaurant(restaurantId, id);
   } else if (abbreviation == 'a') {
     getAmicaRestaurant(restaurantId, id);
+  } else if (abbreviation == 's') {
+    getSodexoRestaurant(restaurantId, id);
   }
 }
 

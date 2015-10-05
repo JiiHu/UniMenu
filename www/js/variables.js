@@ -1,7 +1,14 @@
+
+var unimenuFw = "http://api.unimenu.fi/?fw=true&url=";
+
 var unicafeApi = "http://messi.hyyravintolat.fi/publicapi/";
 
 var amicaApiStart = "http://www.amica.fi/modules/json/json/Index?costNumber=";
 var amicaApiEnd = "&language=fi";
+
+// http://www.sodexo.fi/ruokalistat/output/daily_json/ID/YEAR/MONTH/DAY/fi
+var sodexoApiStart = "http://www.sodexo.fi/ruokalistat/output/daily_json/"
+var sodexoApiEnd = "/fi"
 
 var speed = 200;
 var noSelections = true;
@@ -95,7 +102,10 @@ var allRestaurants = {
       "keskusta": [
           {"type":"amica", "id":3348, "name":"Anselmi", "address":"Armilankatu 40", "zip":"53100", "city":"Lappeenranta"},
           {"type":"amica", "id":3347, "name":"Santeri", "address":"Pohjolankatu 10", "zip":"53100", "city":"Lappeenranta"},
-        ]
+        ],
+      "yliopisto": [
+          {"type":"sodexo", "id":7143, "name":"LUT Pääravintola", "address":"Skinnarilankatu 34", "zip":"53850", "city":"Lappeenranta"},
+        ],
     },
     "pori": {
       "kaikki": [
