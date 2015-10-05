@@ -21,7 +21,7 @@
 
   </p>
   <br>
-  <button data-remodal-action="close" class="remodal-confirm">Close <i class="fa fa-close"></i></button>
+  <button data-remodal-action="close" class="remodal-confirm">Sulje <i class="fa fa-close"></i></button>
 </div>
 
 <div id="wrap">
@@ -33,10 +33,10 @@
 
     <div class="container">
       <ul class="tabs">
-          <li class="active"><a class="active" data-tab="#tab1" href="#">My restaurants</a></li>
-          <li><a data-tab="#tab2" href="#">List</a></li>
+          <li class="active"><a class="active" data-tab="#tab1" href="#">Ravintolani</a></li>
+          <li><a data-tab="#tab2" href="#">Lista</a></li>
           <li><a data-tab="#tab3" href="#">Info</a></li>
-          <li><a data-tab="#tab4" href="#">Settings</a></li>
+          <li><a data-tab="#tab4" href="#">Asetukset</a></li>
       </ul>
 
       <div class="tabs-content">
@@ -48,7 +48,7 @@
             <div id="list">
               <div class="container" id="extra">
                 <p>
-                  Click a restaurant to open it temporarily to 'My Restaurants'. Convenient if you are somewhere where you don't eat every day!
+                  Klikkaa ravintolaa avataksesi väliaikaisesti <i>Ravintolani</i>-sivulle. Kätevää jos olet syömässä jossain missä et vieraile joka päivä!
                 </p>
                 <div id="nav"></div>
               </div>
@@ -58,7 +58,7 @@
           <div class="tabs-pane" id="tab3">
             <div id="info">
               <div class="container menu-toggleable" id="extra">
-                <h4>Unicafe food colors</h4>
+                <h4>Unicafe-ruokien värit</h4>
                 <div class="colors">
                   <div class="category"><div class="color Bistro"></div> Bistro </div>
                   <div class="category"><div class="color Maukkaasti"></div> Maukkaasti </div>
@@ -70,18 +70,18 @@
                 <br />
 
                 <p>
-                  Restaurant missing? Other feedback? Email <i>play-store@huotari.me</i>
+                  Ravintola puuttuu? Muuta palautetta? Laita sähköpostia <i>play-store@huotari.me</i>
                 </p>
 
                 <br />
 
                 <p>
-                  You can see additional information about restaurant by clicking its name on "My Restaurants" view.
+                  Voit katsoa lisätietoja ravintolasta klikkaamalla ravintolan nimeä Ravintolani-sivulla.
                 </p>
 
                 <br />
 
-                <b>Abbreviations</b>
+                <b>Lyhenteet</b>
                 <table>
                   <tbody>
 
@@ -179,10 +179,26 @@
 
           <div class="tabs-pane" id="tab4">
             <div id="settings">
-              <p>Select restaurants which will be automatically opened to 'My restaurants' when the app is opened.</p>
-              <div id="settings-menu">
+
+              <ul class="tabs dark-tabs">
+                <li class="active"><a class="active" data-tab="#set1" href="#">Ravintolani</a></li>
+                <li><a data-tab="#set2" href="#">Kaupungit</a></li>
+              </ul>
+
+              <div class="tabs-pane active" id="set1">
+                <p>Valitse ravintolat jotka ovat automaattisesti näkyvillä <i>Ravintolani</i> kohdassa kun ohjelma avataan.</p>
+                <div id="settings-menu">
+                </div>
+                <div class="cb"></div>
               </div>
-              <div class="cb"></div>
+
+              <div class="tabs-pane" id="set2">
+                <p>Valitse kaupungit jotka ovat näkyvissä kohdissa <i>Lista</i> ja asetusten sivulla <i>Ravintolani</i>.</p>
+                <div id="cities-menu">
+                </div>
+                <div class="cb"></div>
+              </div>
+
             </div>
           </div>
       </div>

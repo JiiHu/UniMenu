@@ -10,8 +10,8 @@ var amicaApiStart = "http://www.amica.fi/modules/json/json/Index?costNumber=";
 var amicaApiEnd = "&language=fi";
 
 // http://www.sodexo.fi/ruokalistat/output/daily_json/ID/YEAR/MONTH/DAY/fi
-var sodexoApiStart = "http://www.sodexo.fi/ruokalistat/output/daily_json/"
-var sodexoApiEnd = "/fi"
+var sodexoApiStart = "http://www.sodexo.fi/ruokalistat/output/daily_json/";
+var sodexoApiEnd = "/fi";
 
 var speed = 200;
 var noSelections = true;
