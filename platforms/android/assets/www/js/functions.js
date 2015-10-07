@@ -54,7 +54,7 @@ function convertAmicaDateToUnicafeFormat(amica) {
 function convertLutDateToUnicafeFormat(day) {
   var converted = day.substr(8, 2) + ".";
   converted += day.substr(5, 2);
-  
+
   return converted;
 }
 

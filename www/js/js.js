@@ -269,7 +269,7 @@ function getMenuForLutRestaurant(foods) {
 }
 
 
-function getAllLutRestaurants(sodexoRestaurant, fullId) {
+function getAllLutRestaurants(restaurant, fullId) {
   if(lutAreFetched) {
     if (restaurantData[fullId]['loaded']) {
       restaurantIsFetched(fullId);

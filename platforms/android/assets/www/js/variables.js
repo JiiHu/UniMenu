@@ -10,8 +10,8 @@ var amicaApiStart = "http://www.amica.fi/modules/json/json/Index?costNumber=";
 var amicaApiEnd = "&language=fi";
 
 // http://www.sodexo.fi/ruokalistat/output/daily_json/ID/YEAR/MONTH/DAY/fi
-var sodexoApiStart = "http://www.sodexo.fi/ruokalistat/output/daily_json/"
-var sodexoApiEnd = "/fi"
+var sodexoApiStart = "http://www.sodexo.fi/ruokalistat/output/daily_json/";
+var sodexoApiEnd = "/fi";
 
 var speed = 200;
 var noSelections = true;
@@ -82,12 +82,17 @@ var allRestaurants = {
     },
     "espoo": {
       "otaniemi": [
-          {"type":"amica", "id":"0199", "name": "Aalto TUAS", "address":"Otaniementie 17", "zip":"02150", "city":"Espoo"},
-          {"type":"amica", "id":"3579", "name": "Aalto VM5", "address":"Vuorimiehentie 5", "zip":"02150", "city":"Espoo"},
           {"type":"amica", "id":"0190", "name": "Alvari", "address":"Otakaari 1 D", "zip":"02150", "city":"Espoo"},
+          {"type":"sodexo", "id":"99", "name": "Electra", "address":"Otakaari 7", "zip":"02150", "city":"Espoo"},
+          {"type":"sodexo", "id":"139", "name": "Kasper", "address":"Vuorimiehentie 2", "zip":"02150", "city":"Espoo"},
+          {"type":"sodexo", "id":"140", "name": "Konetekniikka", "address":"Otakaari 4", "zip":"02150", "city":"Espoo"},
           {"type":"amica", "id":"0191", "name": "Kvarkki", "address":"Otakaari 3", "zip":"02150", "city":"Espoo"},
-          {"type":"amica", "id":3292, "name": "Laurea Otaniemi", "address":"Metsänpojankuja 3", "zip":"02130", "city":"Espoo"},
+          {"type":"amica", "id":3292, "name": "Laurea", "address":"Metsänpojankuja 3", "zip":"02130", "city":"Espoo"},
           {"type":"amica", "id":"019002", "name": "Silinteri", "address":"Otakaari 1 D", "zip":"02160", "city":"Espoo"},
+          {"type":"sodexo", "id":"13916", "name": "Tietotie 6", "address":"Tietotie 6", "zip":"02150", "city":"Espoo"},
+          {"type":"amica", "id":"0199", "name": "TUAS", "address":"Otaniementie 17", "zip":"02150", "city":"Espoo"},
+          {"type":"sodexo", "id":"13918", "name": "Valimo", "address":"Metallimiehenkuja 2", "zip":"02150", "city":"Espoo"},
+          {"type":"amica", "id":"3579", "name": "VM5", "address":"Vuorimiehentie 5", "zip":"02150", "city":"Espoo"},
         ],
       "muut": [
           {"type":"unicafe", "id":27, "name":"Vanha Maantie", "address":"", "zip":"", "city":""},
@@ -99,6 +104,11 @@ var allRestaurants = {
           {"type":"amica", "id":3032, "name": "Laurea Hella Wuolijoki", "address":"Ratatie 22", "zip":"01300", "city":"Vantaa"},
           {"type":"unicafe", "id":28, "name":"Leiritie", "address":"", "zip":"", "city":""},
           {"type":"unicafe", "id":22, "name":"Onnentie", "address":"", "zip":"", "city":""},
+        ]
+    },
+    "kerava": {
+      "kaikki": [
+          {"type":"amica", "id":3028, "name": "Välkkä", "address":"Keskikatu 3 A", "zip":"04200", "city":"Kerava"},
         ]
     },
     "lappeenranta": {

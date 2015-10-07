@@ -269,7 +269,7 @@ function getMenuForLutRestaurant(foods) {
 }
 
 
-function getAllLutRestaurants(sodexoRestaurant, fullId) {
+function getAllLutRestaurants(restaurant, fullId) {
   if(lutAreFetched) {
     if (restaurantData[fullId]['loaded']) {
       restaurantIsFetched(fullId);
@@ -299,7 +299,7 @@ function getAllLutRestaurants(sodexoRestaurant, fullId) {
         restaurantData[lutId]['days'][date] = day;
       });
 
-      if (restaurantData[lutId]['saved']) {
+      if (isRestaurantSaved(lutId)) {
         restaurantIsFetched(lutId);
       }
     });
