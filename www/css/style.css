@@ -319,19 +319,35 @@ div.Bistro {
   border-color: #444;
 }
 
+div.Kokinsuositus,
 div.Maukkaasti {
   border-color: rgb(195, 0, 52);
   background-color: rgb(195, 0, 52);
 }
 
+div.Kotoisiamakuja,
 div.Edullisesti {
   border-color: #0082cc;
 }
 
+div.Kasvisruoka,
+div.Kasvisherkkuja,
 div.Kevyesti {
   border-color: #0acc00;
 }
 
+div.Keitto,
+div.Soppaa {
+  border-color: #ffa200;
+}
+
+div.Salaatti,
+div.Salaattilounas {
+  border-color: #339933;
+  background-color: #339933;
+}
+
+div.Jalkiruoka,
 div.Makeasti {
   border-color: #ff9898;
 }

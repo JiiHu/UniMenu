@@ -263,6 +263,13 @@ function getMenuForLutRestaurant(foods) {
     var foodList = '';
     foodList += single['title_fi'] + diet + "<br />";
     hash['name'] = foodList;
+
+    hash['price'] = {};
+    price = single['category'].replace(/\s+/g, '');
+    price = price.replace(/ä/g, 'a');
+    price = price.replace(/ö/g, 'ö');
+    hash['price']['name'] = price;
+
     menus.push(hash);
   });
   return menus;
