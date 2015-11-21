@@ -1,80 +1,4 @@
 
-function formatDate(date) {
-  var arr = new Array();
-  var index = date.indexOf(".");
-  arr[0] = date.substr(0, index);  // day
-  arr[1] = date.substr(index + 1); // month
-  return arr;
-}
-
-function dateIsOlder(now, date2) {
-  // is today before date2
-  var dateArr1 = formatDate(now);
-  var dateArr2 = formatDate(date2);
-
-  if (dateArr1[1] == dateArr2[1]) {
-    return dateArr1[0] > dateArr2[0];
-  } else {
-    return dateArr1[1] > dateArr2[1];
-  }
-}
-
-function dateIsToday(date1, date2) {
-  var dateArr1 = formatDate(date1);
-  var dateArr2 = formatDate(date2);
-
-  if (dateArr1[1] == dateArr2[1]) {
-    return dateArr1[0] == dateArr2[0];
-  } else {
-    return false;
-  }
-}
-
-function addLeadingZero(int) {
-  if (int < 10) {
-    return "0"+int;
-  }
-  return int;
-}
-
-function getTodayInUnicafeFormat() {
-  var thisDate = new Date();
-  var dd = addLeadingZero( thisDate.getDate() );
-  var mm = addLeadingZero( thisDate.getMonth()+1 );
-  return dd+"."+mm;
-}
-
-function convertAmicaDateToUnicafeFormat(amica) {
-  var converted = amica.substr(8, 2) + ".";
-  converted += amica.substr(5, 2);
-
-  return converted;
-}
-
-function convertLutDateToUnicafeFormat(day) {
-  var converted = day.substr(8, 2) + ".";
-  converted += day.substr(5, 2);
-
-  return converted;
-}
-
-function getDayForSodexoApi() {
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1;
-  var yyyy = today.getFullYear();
-
-  if(dd<10) {
-    dd = '0' + dd;
-  }
-
-  if(mm<10) {
-    mm = '0' + mm;
-  }
-
-  return '/' + yyyy + '/' + mm + '/' + dd;
-}
-
 
 function getLetterForType(type) {
   if (type == 'unicafe') {
@@ -131,23 +55,7 @@ function saveAddress(fullId, address, zip, city) {
   restaurantData[fullId]['info']['city'] = city;
 }
 
-function convertLutNameToId(name) {
-  if (name == 'ylioppilastalo') {
-    return 'l1';
-  } else if (name == 'kurniekka') {
-    return 'l2';
-  } else if (name == 'amk') {
-    return 'l3';
-  } else if (name == '6-vaihe') {
-    return 'l4';
-  } else if (name == 'yliopisto') {
-    return 'l5';
-  } else if (name == 'skykahvila') {
-    return 'l6';
-  }
 
-  return '';
-}
 
 
 

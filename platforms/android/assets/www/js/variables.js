@@ -111,6 +111,13 @@ var allRestaurants = {
           {"type":"amica", "id":3028, "name": "Välkkä", "address":"Keskikatu 3 A", "zip":"04200", "city":"Kerava"},
         ]
     },
+    "kuopio": {
+      "yliopisto": [
+          {"type":"amica", "id":"0436", "name": "Canthia", "address":"Yliopistonranta 1 C, B porras", "zip":"70210", "city":"Kuopio"},
+          {"type":"amica", "id":"0442", "name": "Mediteknia", "address":"Yliopistonranta 1 B", "zip":"70210", "city":"Kuopio"},
+          {"type":"amica", "id":"0437", "name": "Snellmania", "address":"Yliopistonranta 1 E", "zip":"70210", "city":"Kuopio"},
+        ]
+    },
     "lappeenranta": {
       "keskusta": [
           {"type":"amica", "id":3348, "name":"Anselmi", "address":"Armilankatu 40", "zip":"53100", "city":"Lappeenranta"},
@@ -130,6 +137,11 @@ var allRestaurants = {
           {"type":"amica", "id":3655, "name":"Mikael", "address":"Mikonkatu 20-22", "zip":"28100", "city":"Pori"},
           {"type":"amica", "id":"0956", "name":"Pripoli", "address":"Tiedepuisto 4", "zip":"28600", "city":"Pori"},
           {"type":"amica", "id":3659, "name":"Sofia", "address":"Siltapuistokatu 2", "zip":"28100", "city":"Pori"},
+        ]
+    },
+    "savonlinna": {
+      "kaikki": [
+          {"type":"amica", "id":"0484", "name":"Välkky", "address":"Kuninkaankartanonkatu 7", "zip":"57100", "city":"Savonlinna"},
         ]
     },
     "tampere": {
