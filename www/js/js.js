@@ -39,7 +39,12 @@ function generateHtmlForRestaurantDay(foods) {
   } else {
     // iterate through day's foods
     $.each( foods, function( key, food ) {
-      var foodString = "<li class='food'><div class='color " + food.price.text + "'></div>" + food.name_fi + "</li>";
+      var price_text = '';
+
+      if ( food.price ) {
+        price_text = food.price.text;
+      }
+      var foodString = "<li class='food'><div class='color " + price_text + "'></div>" + food.name_fi + "</li>";
       html += foodString;
     });
   }
@@ -298,8 +303,9 @@ $(document).ready(function(){
   }
 
   if (noSelections) {
-    $( "#menu" ).append( '<div id="empty-notification"><br /><p>Avaa <b>Asetukset</b> lisätäksesi ravintoloita niin että ne näkyvät tällä sivulla automaattisesti. <i>Asetuksista</i> voit myös valita mitkä kaupungit ovat näkyvissä.</p></div>' );
+    $( "#menu" ).append( '<div id="empty-notification"><br /><p>Avaa <b>Asetukset</b> klikkaamalla oikeasta ylänurkasta lisätäksesi ravintoloita niin että ne näkyvät tällä sivulla automaattisesti. <i>Asetuksista</i> voit myös valita mitkä kaupungit ovat näkyvissä.</p></div>' );
   } else {
+    $( "#menu" ).append( '<div id="empty-notification"><br /><i class="fa fa-circle-o-notch fa-spin"></i></div>' );
     fetchMenusForArray( savedRestaurants );
   }
 

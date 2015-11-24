@@ -1,6 +1,4 @@
 
-var today = getTodayInUnicafeFormat();
-
 
 function toggleRestaurant(id) {
   if (restaurantData[id]['visible']) {
@@ -8,7 +6,7 @@ function toggleRestaurant(id) {
     $( "#" + id ).remove();
   } else {
     restaurantData[id]['visible'] = true;
-    fetchMenu(id);
+    fetchMenusForArray( [id] );
   }
 }
 
@@ -17,9 +15,13 @@ function toggleRestaurant(id) {
 function generateHtmlForRestaurant(id) {
   var html = "<li class='title' class='" + id+ "'>" + restaurantData[id]['name'] + "</li>";
 
-  $.each( restaurantData[id]['days'], function( key, val ) {
-    if (val['date'] == today) {
-      html += generateHtmlForRestaurantDay(val);
+  if (restaurantData[id]['error']) {
+    html += "<li class='food'>Ei ruokalistoja saatavilla</li>"
+  }
+
+  $.each( restaurantData[id]['days'], function( day, foods ) {
+    if (day == "'0'") {
+      html += generateHtmlForRestaurantDay( foods );
     }
   });
 
@@ -29,16 +31,21 @@ function generateHtmlForRestaurant(id) {
   $( "#menu" ).append( html );
 }
 
-function generateHtmlForRestaurantDay(dayObject) {
-  var html = "<li class='date'>" + dayObject['date'] + "</li>";
+function generateHtmlForRestaurantDay(foods) {
+  var html = "<li class='date'>Tänään</li>";
 
-  if(jQuery.isEmptyObject(dayObject['menu'])) {
+  if(jQuery.isEmptyObject(foods)) {
     html += "<li class='food'>-</li>";
   } else {
     // iterate through day's foods
-    $.each( dayObject['menu'], function( key, val ) {
-      var food = "<li class='food'><div class='color " + val.price.name + "'></div>" + val.name + "</li>";
-      html += food;
+    $.each( foods, function( key, food ) {
+      var price_text = '';
+      
+      if ( food.price ) {
+        price_text = food.price.text;
+      }
+      var foodString = "<li class='food'><div class='color " + price_text + "'></div>" + food.name_fi + "</li>";
+      html += foodString;
     });
   }
 
@@ -120,219 +127,41 @@ function restaurantIsFetched(id) {
   }
 }
 
-function parseUnicafeMenu(data) {
 
-  $.each( data, function( key, food ) {
-    var meta = '';
-    if (!jQuery.isEmptyObject( food['meta'][0] )) {
-      meta += ' [';
-      $.each( food['meta'][0], function( key, val ) {
-        meta += val + ', ';
-      });
-      // remove last comma
-      meta = meta.substring(0, meta.length - 2);
-      meta += "]";
-    };
 
-    food['name'] = food['name'] + meta;
+function createStringFromIdArray(array) {
+  var string = '';
+  array.forEach(function(id) {
+    string += id + ",";
   });
-
-  return data;
+  return string;
 }
 
-function getUnicafeRestaurant(id, fullId) {
-  var menus = {};
-  var url = unicafeApi + "restaurant/" + id;
+function parseRestaurantData( fullId, data ) {
+
+  restaurantData[fullId]['visible'] = true;
+  if ( data['url'] ) {
+    restaurantData[fullId]['info']['url'] = data['url'];
+  }
+
+  if ( data['error'] ) {
+    restaurantData[fullId]['error'] = true;
+  }
+
+  restaurantData[fullId]['days'] = data['menus'];
+
+  restaurantIsFetched(fullId);
+}
+
+function fetchMenusForArray(array) {
+  var restaurantIds = createStringFromIdArray(array);
+  var url = unimenuApi + restaurantIds;
 
   $.getJSON(url, function( data ) {
-    var open = 'Regular open: ' + data['information']['lounas']['regular'][0]['open'];
-    open = open + " - " + data['information']['lounas']['regular'][0]['close'];
-
-    saveAddress(fullId, data['information']['address'], data['information']['zip'], data['information']['city']);
-    restaurantData[fullId]['info']['open'] = open;
-
-    $.each( data.data, function( key, val ) {
-      var dateStripped = this.date.substring(3);
-      var isInPast = dateIsOlder(today, dateStripped);
-      var menuIsForToday = dateIsToday(today, dateStripped);
-
-      var day = {};
-      day['date'] = dateStripped;
-      day['past'] = isInPast;
-      day['today'] = menuIsForToday;
-      day['menu'] = {};
-
-      if (!jQuery.isEmptyObject(this.data)) {
-        day['menu'] = parseUnicafeMenu(this.data);
-      }
-
-      menus[dateStripped] = day;
-      restaurantData[fullId]['days'] = menus;
-    });
-
-    restaurantIsFetched(fullId);
-  });
-
-  return menus;
-}
-
-function getMenuForAmicaRestaurant(setMenus) {
-  var menus = [];
-
-  setMenus.forEach(function(set) {
-    var hash = {};
-    hash['price'] = 'amica';
-    var foodList = '';
-    set['Components'].forEach(function(component) {
-      foodList += component + "<br />";
-    });
-    hash['name'] = foodList;
-    menus.push(hash);
-  });
-  return menus;
-}
-
-function getAmicaRestaurant(amicaRestaurant, fullId) {
-  var amicaUrl = amicaApiStart + amicaRestaurant + amicaApiEnd;
-  $.getJSON(amicaUrl, function( data ) {
-    restaurantData[fullId]['info']['url'] = data['RestaurantUrl'];
-
-    data['MenusForDays'].forEach(function(menu) {
-      var date = convertAmicaDateToUnicafeFormat(menu.Date);
-      var isInPast = dateIsOlder(today, date);
-      var menuIsForToday = dateIsToday(today, date);
-
-      var day = {};
-      day['date'] = date;
-      day['past'] = isInPast;
-      day['today'] = menuIsForToday;
-      day['menu'] = getMenuForAmicaRestaurant(menu['SetMenus']);
-
-      restaurantData[fullId]['days'][date] = day;
-    });
-
-    restaurantIsFetched(fullId);
-  });
-}
-
-function getSodexoRestaurant(sodexoRestaurant, fullId) {
-  var sodexoUrl = unimenuFw + sodexoApiStart + sodexoRestaurant + getDayForSodexoApi() + sodexoApiEnd;
-  $.getJSON(sodexoUrl, function( data ) {
-    restaurantData[fullId]['info']['url'] = data['meta']['ref_url'];
-
-    // currently sodexo api retrieves only today
-    var day = {};
-    var date = today;
-    day['date'] = date;
-    day['past'] = false;
-    day['today'] = true;
-    var menus = [];
-    data['courses'].forEach(function(food) {
-      var name = food['title_fi'];
-
-      if (typeof food['properties'] !== "undefined") {
-         name += " [" + food['properties'] + "]"
-      }
-
-      var currentFood = {
-        'name':name,
-        'price':'sodexo'
-      };
-      menus.push(currentFood);
-    });
-    day['menu'] = menus;
-
-    restaurantData[fullId]['days'][date] = day;
-
-    restaurantIsFetched(fullId);
-  });
-}
-
-function getMenuForLutRestaurant(foods) {
-  var menus = [];
-
-  foods.forEach(function(single) {
-    var hash = {};
-    hash['price'] = '';
-
-    var diet = '';
-    if(typeof single['diet'] !== "undefined" && single['diet'] != '') {
-      diet = " [" + single['diet'] + "]";
-    }
-
-    var foodList = '';
-    foodList += single['title_fi'] + diet + "<br />";
-    hash['name'] = foodList;
-
-    hash['price'] = {};
-    price = single['category'].replace(/\s+/g, '');
-    price = price.replace(/ä/g, 'a');
-    price = price.replace(/ö/g, 'ö');
-    hash['price']['name'] = price;
-
-    menus.push(hash);
-  });
-  return menus;
-}
-
-
-function getAllLutRestaurants(restaurant, fullId) {
-  if(lutAreFetched) {
-    if (restaurantData[fullId]['loaded']) {
-      restaurantIsFetched(fullId);
-    }
-    return;
-  }
-  lutAreFetched = true;
-
-  $.getJSON(lutApi, function( data ) {
-    $.each(data, function(name, value) {
-      var lutId = convertLutNameToId(name);
-      restaurantData[lutId]['info']['url'] = value['link'];
-      restaurantData[lutId]['loading'] = false;
-      restaurantData[lutId]['loaded'] = true;
-
-      $.each(value['days'], function(day, dayMenu) {
-        var date = convertLutDateToUnicafeFormat(day);
-        var isInPast = dateIsOlder(today, date);
-        var menuIsForToday = dateIsToday(today, date);
-
-        var day = {};
-        day['date'] = date;
-        day['past'] = isInPast;
-        day['today'] = menuIsForToday;
-        day['menu'] = getMenuForLutRestaurant(dayMenu['foods']);
-
-        restaurantData[lutId]['days'][date] = day;
-      });
-
-      if (isRestaurantSaved(lutId)) {
-        restaurantIsFetched(lutId);
-      }
+    $.each(data, function(fullId, restaurantData) {
+      parseRestaurantData( fullId, restaurantData );
     });
   });
-}
-
-
-
-function fetchMenu(id) {
-  if (restaurantData[id]['loading']) {
-    return;
-  }
-  restaurantData[id]['loading'] = true;
-
-  var abbreviation = id.charAt(0);
-  var restaurantId = id.substring(1);
-
-  if (abbreviation == 'u') {
-    getUnicafeRestaurant(restaurantId, id);
-  } else if (abbreviation == 'a') {
-    getAmicaRestaurant(restaurantId, id);
-  } else if (abbreviation == 's') {
-    getSodexoRestaurant(restaurantId, id);
-  } else if (abbreviation == 'l') {
-    getAllLutRestaurants(restaurantId, id);
-  }
 }
 
 
@@ -343,6 +172,8 @@ function createEmptyRestaurantData(id, restaurant, area, city) {
   restaurantData[id]['type'] = restaurant.name;
   restaurantData[id]['area'] = area;
   restaurantData[id]['city'] = city;
+  restaurantData[id]['lat'] = '';
+  restaurantData[id]['lon'] = '';
   restaurantData[id]['visible'] = false;
   restaurantData[id]['loading'] = false;
   restaurantData[id]['loaded'] = false;
@@ -355,7 +186,7 @@ function createEmptyRestaurantData(id, restaurant, area, city) {
 
   var saved = isRestaurantSaved(id);
   restaurantData[id]['saved'] = saved;
-  toggleSavedRestaurant(id);
+  //toggleSavedRestaurant(id);
 }
 
 
@@ -441,6 +272,7 @@ function checkIfUserHasDoneCitySelections() {
 
 $(document).ready(function(){
   checkIfUserHasDoneCitySelections();
+  var savedRestaurants = [];
 
   for (var city in allRestaurants) {
     addCityToSettings(city);
@@ -461,6 +293,7 @@ $(document).ready(function(){
         var saved = getSavedClass(savedId);
         if (isRestaurantSaved(savedId)) {
           noSelections = false;
+          savedRestaurants.push(savedId);
         }
 
         createEmptyRestaurantData(savedId, restaurant, area, city);
@@ -470,7 +303,10 @@ $(document).ready(function(){
   }
 
   if (noSelections) {
-    $( "#menu" ).append( '<div id="empty-notification"><br /><p>Avaa <b>Asetukset</b> lisätäksesi ravintoloita niin että ne näkyvät tällä sivulla automaattisesti. <i>Asetuksista</i> voit myös valita mitkä kaupungit ovat näkyvissä.</p></div>' );
+    $( "#menu" ).append( '<div id="empty-notification"><br /><p>Avaa <b>Asetukset</b> klikkaamalla oikeasta ylänurkasta lisätäksesi ravintoloita niin että ne näkyvät tällä sivulla automaattisesti. <i>Asetuksista</i> voit myös valita mitkä kaupungit ovat näkyvissä.</p></div>' );
+  } else {
+    $( "#menu" ).append( '<div id="empty-notification"><br /><i class="fa fa-circle-o-notch fa-spin"></i></div>' );
+    fetchMenusForArray( savedRestaurants );
   }
 
   tabby.init();

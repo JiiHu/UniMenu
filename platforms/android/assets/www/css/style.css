@@ -180,6 +180,13 @@ h1 {
   float: left;
 }
 
+.gear img {
+  float: right;
+  max-width: 30px;
+  max-height: 30px;
+  margin: 25px 25px 0 0;
+}
+
 h1 span {
   font-weight: 400;
 }
@@ -325,7 +332,7 @@ div.Maukkaasti {
   background-color: rgb(195, 0, 52);
 }
 
-div.Kotoisiamakuja,
+div.Kotoisia.makuja,
 div.Edullisesti {
   border-color: #0082cc;
 }
@@ -542,6 +549,11 @@ footer p {
   }
   .toggle-button {
     display: block;
+  }
+  .gear img {
+    max-width: 25px;
+    max-height: 25px;
+    margin: 12px 15px 0 0;
   }
 }
 
