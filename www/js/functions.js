@@ -23,7 +23,10 @@ function getModalText(id) {
   text += "<b class='capitalize'>" + restaurantData[id]['city'] + " - " + restaurantData[id]['area'] + "</b><br />";
 
   if (restaurantData[id]['info']['open'] != '') {
-    text += restaurantData[id]['info']['open'] + "<br />";
+    $.each(restaurantData[id]['info']['open'], function(key, val) {
+      text += "<br /><p><b>Lounas " + lang[key] + "</b></p>";
+      text += "<p>" + val['open'] + "-" + val['close'] + "</p><br />";
+    });
   }
 
   if (restaurantData[id]['info']['url'] != '') {

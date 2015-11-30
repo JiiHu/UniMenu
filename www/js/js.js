@@ -10,10 +10,23 @@ function toggleRestaurant(id) {
   }
 }
 
+function getOpenText(id) {
+  var text = '';
+  if ( restaurantData[id]['info']['open'] != '' ) {
+    $.each(restaurantData[id]['info']['open'], function(key, val) {
+      text = "<span>" + lang[key] + "</span> " + val['open'] + "-" + val['close'];
+    });
+
+    text = '<small>' + text + '</small>';
+  }
+  return text;
+}
 
 
 function generateHtmlForRestaurant(id) {
-  var html = "<li class='title' class='" + id+ "'>" + restaurantData[id]['name'] + "</li>";
+  var open = getOpenText(id);
+  var icon = '<img src="img/fa-chevron-right.png" class="arrow" />';
+  var html = "<li class='title' class='" + id+ "'>" + restaurantData[id]['name'] + icon + open + "</li>";
 
   if (restaurantData[id]['error']) {
     html += "<li class='food'>Ei ruokalistoja saatavilla</li>"
@@ -40,11 +53,15 @@ function generateHtmlForRestaurantDay(foods) {
     // iterate through day's foods
     $.each( foods, function( key, food ) {
       var price_text = '';
+      var meta_text = '';
 
       if ( food.price ) {
         price_text = food.price.text;
       }
-      var foodString = "<li class='food'><div class='color " + price_text + "'></div>" + food.name_fi + "</li>";
+      if ( food.meta ) {
+        meta_text = ' [' + food.meta + ']';
+      }
+      var foodString = "<li class='food'><div class='color " + price_text + "'></div>" + food.name_fi + meta_text + "</li>";
       html += foodString;
     });
   }
@@ -146,6 +163,22 @@ function parseRestaurantData( fullId, data ) {
 
   if ( data['error'] ) {
     restaurantData[fullId]['error'] = true;
+  }
+
+  if ( data['open'] ) {
+    restaurantData[fullId]['info']['open'] = data['open'];
+  }
+
+  if ( data['address'] ) {
+    restaurantData[fullId]['info']['address'] = data['address'];
+  }
+
+  if ( data['zip'] ) {
+    restaurantData[fullId]['info']['zip'] = data['zip'];
+  }
+
+  if ( data['city'] ) {
+    restaurantData[fullId]['info']['city'] = data['city'];
   }
 
   restaurantData[fullId]['days'] = data['menus'];
@@ -305,12 +338,11 @@ $(document).ready(function(){
   if (noSelections) {
     $( "#menu" ).append( '<div id="empty-notification"><br /><p>Avaa <b>Asetukset</b> klikkaamalla oikeasta ylänurkasta lisätäksesi ravintoloita niin että ne näkyvät tällä sivulla automaattisesti. <i>Asetuksista</i> voit myös valita mitkä kaupungit ovat näkyvissä.</p></div>' );
   } else {
-    $( "#menu" ).append( '<div id="empty-notification"><br /><i class="fa fa-circle-o-notch fa-spin"></i></div>' );
+    $( "#menu" ).append( '<div id="empty-notification"><div class="loading"><img src="img/fa-circle-o.png" class="animated faa-burst" /></div></div>' );
     fetchMenusForArray( savedRestaurants );
   }
 
   tabby.init();
-
   appendShellitFooterIfBrowser();
 
 });
