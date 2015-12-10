@@ -297,9 +297,13 @@ function addCityAndAllItsAreasToNavs(city) {
 
 function checkIfUserHasDoneCitySelections() {
   if ( !hasUserSelectedCities() ) {
-    window.localStorage.setItem('city-helsinki', true);
-    window.localStorage.setItem('city-vantaa', true);
-    window.localStorage.setItem('city-espoo', true);
+    try {
+      window.localStorage.setItem('city-helsinki', true);
+      window.localStorage.setItem('city-vantaa', true);
+      window.localStorage.setItem('city-espoo', true);
+    } catch(error) {
+      $( "#menu" ).append( '<div id="empty-notification"><br /><b>Mene pois selaimen Yksityinen Selaus -tilasta käyttääksesi unimenua</b></div>' );
+    }
   }
 }
 
