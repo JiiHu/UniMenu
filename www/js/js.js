@@ -11,6 +11,7 @@ function toggleRestaurant(id) {
 }
 
 function getOpenText(id) {
+  return '';
   var text = '';
   if ( restaurantData[id]['info']['open'] != '' ) {
     $.each(restaurantData[id]['info']['open'], function(key, val) {

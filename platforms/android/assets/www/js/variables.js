@@ -1,19 +1,7 @@
 
-var unimenuFw = "http://api.unimenu.fi/?fw=true&url=";
-
-var unicafeApi = "http://messi.hyyravintolat.fi/publicapi/";
-
-var lutApi = "http://skinfo.dy.fi/api/restaurants.json";
-var lutAreFetched = false;
-
-var amicaApiStart = "http://www.amica.fi/modules/json/json/Index?costNumber=";
-var amicaApiEnd = "&language=fi";
-
-// http://www.sodexo.fi/ruokalistat/output/daily_json/ID/YEAR/MONTH/DAY/fi
-var sodexoApiStart = "http://www.sodexo.fi/ruokalistat/output/daily_json/";
-var sodexoApiEnd = "/fi";
-
 var unimenuApi = "http://api.unimenu.fi/?arr=";
+
+var lang = {'regular':'ma-pe'};
 
 var speed = 200;
 var noSelections = true;
