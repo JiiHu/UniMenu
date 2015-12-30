@@ -176,6 +176,10 @@ h1 {
   font-weight: 300;
 }
 
+#closestResults .title {
+  margin-top: 10px;
+}
+
 .site-title {
   float: left;
 }
