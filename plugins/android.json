@@ -9,6 +9,10 @@
     "installed_plugins": {
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.unilunch.app"
+        },
+        "plugin.google.maps": {
+            "API_KEY_FOR_ANDROID": "AIzaSyBe9efwHUGG45XnPae5ByKAI3H_d1ShJO4",
+            "PACKAGE_NAME": "com.unilunch.app"
         }
     },
     "dependent_plugins": {}

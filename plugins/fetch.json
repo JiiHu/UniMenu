@@ -6,5 +6,16 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "plugin.google.maps": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-googlemaps"
+        },
+        "is_top_level": true,
+        "variables": {
+            "API_KEY_FOR_ANDROID": "AIzaSyBe9efwHUGG45XnPae5ByKAI3H_d1ShJO4",
+            "API_KEY_FOR_IOS": "AIzaSyAfXrQyWHoezqdoE7V8HEjSs0YAZ6VpLNk"
+        }
     }
 }
