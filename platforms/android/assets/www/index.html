@@ -37,6 +37,7 @@
     <div class="container">
       <ul class="tabs">
           <li class="active"><a class="active" data-tab="#tab1" href="#">Ravintolani</a></li>
+          <li><a data-tab="#tab5" href="#">Lähellä</a></li>
           <li><a data-tab="#tab2" href="#">Lista</a></li>
           <li><a data-tab="#tab3" href="#">Info</a></li>
       </ul>
@@ -53,6 +54,35 @@
                   Klikkaa ravintolaa avataksesi väliaikaisesti <i>Ravintolani</i>-sivulle. Kätevää jos olet syömässä jossain missä et vieraile joka päivä!
                 </p>
                 <div id="nav"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabs-pane" id="tab5">
+            <div id="closest">
+              <div class="container">
+
+                <ul class="tabs">
+                  <li class="active"><a class="active" data-tab="#mapset1" href="#">Lähellä</a></li>
+                  <li class=""><a class="" data-tab="#mapset2" href="#">Kartta</a></li>
+                </ul>
+                <br />
+
+                <div id="mapset1" class="tabs-pane active">
+
+                  <p><b>Lähellä olevat ravintolat</b></p>
+                  <br />
+                  <a href="#" class="remodal-confirm" id="searchClosestBtn">Etsi</a>
+                  <br /><br />
+
+                  <p id="closestResults"></p>
+
+                </div>
+
+                <div id="mapset2" class="tabs-pane">
+                  KARTTA TÄHÄN
+                </div>
+
               </div>
             </div>
           </div>
@@ -226,6 +256,7 @@
 <script src="js/tabby.js"></script>
 <script src="js/variables.js" charset="UTF-8"></script>
 <script src="js/functions.js" charset="UTF-8"></script>
+<script src="js/location.js" charset="UTF-8"></script>
 <script src="js/js.js" charset="UTF-8"></script>
 
 </body>

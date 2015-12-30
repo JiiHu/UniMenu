@@ -176,6 +176,10 @@ h1 {
   font-weight: 300;
 }
 
+#closestResults .title {
+  margin-top: 10px;
+}
+
 .site-title {
   float: left;
 }
@@ -231,10 +235,12 @@ ul#area li a:hover {
   display: none;
 }
 
+#closest,
 #list {
   background-color: #f8f8f8;
 }
 
+#closest .container,
 #list .container {
   padding: 10px;
 }
@@ -391,24 +397,25 @@ li.date {
   padding-top: 10px;
 }
 
-li.title {
+.title {
   font-weight: bold;
   padding: 2px 0 5px;
   font-size: 20px;
   line-height: 28px;
   border-bottom: 2px solid #eee;
   cursor: pointer;
+  clear: both;
 }
 
-li.title img.arrow {
+.title img.arrow {
   max-width: 13px;
   max-height: 13px;
   margin-left: 7px;
 }
 
-li.title small {
+.title small {
   font-size: 12px;
-  color: #ccc;
+  color: #bbb;
   float: right;
   padding-top: 8px;
 }
@@ -436,6 +443,10 @@ li.title small {
   max-width: 35px;
 }
 
+.loadingClosest {
+  padding: 40px 0 40px 35px;
+}
+
 #settings-button {
   background-color: transparent;
   margin-top: 2px;
@@ -459,8 +470,9 @@ li.title small {
 }
 
 
-
-#settings, #list {
+#closest,
+#settings,
+#list {
   margin: 0 -15px;
 }
 
@@ -539,6 +551,11 @@ footer p {
   padding: 0 10px;
 }
 
+
+.small-loading {
+  max-width: 15px;
+  max-height: 15px;
+}
 
 
 /*--PHONE--*/

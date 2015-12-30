@@ -23,12 +23,8 @@ function getOpenText(id) {
   return text;
 }
 
-
-function generateHtmlForRestaurant(id) {
-  var open = getOpenText(id);
-  var icon = '<img src="img/fa-chevron-right.png" class="arrow" />';
-  var html = "<li class='title' class='" + id+ "'>" + restaurantData[id]['name'] + icon + open + "</li>";
-
+function generateFoodHtmlForRestaudant(id) {
+  var html = '';
   if (restaurantData[id]['error']) {
     html += "<li class='food'>Ei ruokalistoja saatavilla</li>"
   }
@@ -39,11 +35,22 @@ function generateHtmlForRestaurant(id) {
     }
   });
 
+  return html;
+}
+
+function generateHtmlForRestaurant(id) {
+  var open = getOpenText(id);
+  var icon = '<img src="img/fa-chevron-right.png" class="arrow" />';
+  var html = "<li class='title' class='" + id+ "'>" + restaurantData[id]['name'] + icon + open + "</li>";
+
+  html += generateFoodHtmlForRestaudant(id);
+
   html = "<ul>" + html + "</ul>";
   html = "<div id='" + id + "' class='restaurant'>" + html + "</div>";
 
   $( "#menu" ).append( html );
 }
+
 
 function generateHtmlForRestaurantDay(foods) {
   var html = "<li class='date'>Tänään</li>";
@@ -69,6 +76,16 @@ function generateHtmlForRestaurantDay(foods) {
 
   html = "<ul id='menu-item'>" + html + "</ul>";
   return html;
+}
+
+function generateRestaurantMenuToModal(id) {
+
+  var menu = generateFoodHtmlForRestaudant(id);
+  console.log(menu);
+
+
+  $('.modalMenu').html( menu );
+
 }
 
 
@@ -135,11 +152,13 @@ function toggleSavedRestaurant(id) {
 }
 
 
-function restaurantIsFetched(id) {
+function restaurantIsFetched(id, menuToModal) {
   restaurantData[id]['loading'] = false;
   restaurantData[id]['loaded'] = true;
 
-  if (restaurantData[id]['visible'] == true ) {
+  if (menuToModal) {
+    generateRestaurantMenuToModal(id);
+  } else if (restaurantData[id]['visible'] == true ) {
     generateHtmlForRestaurant(id);
     $('#empty-notification').remove();
   }
@@ -155,7 +174,7 @@ function createStringFromIdArray(array) {
   return string;
 }
 
-function parseRestaurantData( fullId, data ) {
+function parseRestaurantData( fullId, data, menuToModal ) {
 
   restaurantData[fullId]['visible'] = true;
   if ( data['url'] ) {
@@ -184,16 +203,18 @@ function parseRestaurantData( fullId, data ) {
 
   restaurantData[fullId]['days'] = data['menus'];
 
-  restaurantIsFetched(fullId);
+  restaurantIsFetched(fullId, menuToModal);
 }
 
-function fetchMenusForArray(array) {
+function fetchMenusForArray(array, menuToModal) {
   var restaurantIds = createStringFromIdArray(array);
   var url = unimenuApi + restaurantIds;
 
+  menuToModal = typeof menuToModal !== 'undefined' ? menuToModal : false;
+
   $.getJSON(url, function( data ) {
     $.each(data, function(fullId, restaurantData) {
-      parseRestaurantData( fullId, restaurantData );
+      parseRestaurantData( fullId, restaurantData, menuToModal );
     });
   });
 }
@@ -206,10 +227,8 @@ function createEmptyRestaurantData(id, restaurant, area, city) {
   restaurantData[id]['type'] = restaurant.name;
   restaurantData[id]['area'] = area;
   restaurantData[id]['city'] = city;
-  console.log("asd");
-  console.log(restaurant.lat);
-  restaurantData[id]['lat'] = '';
-  restaurantData[id]['lon'] = '';
+  restaurantData[id]['lat'] = restaurant.lat;
+  restaurantData[id]['lon'] = restaurant.lon;
   restaurantData[id]['visible'] = false;
   restaurantData[id]['loading'] = false;
   restaurantData[id]['loaded'] = false;
@@ -222,7 +241,6 @@ function createEmptyRestaurantData(id, restaurant, area, city) {
 
   var saved = isRestaurantSaved(id);
   restaurantData[id]['saved'] = saved;
-  //toggleSavedRestaurant(id);
 }
 
 
@@ -394,8 +412,16 @@ $(document).on('click', ".area h3", function(e){
   parent.find('.restaurant-list').toggle(0);
 });
 
-$(document).on('click', "li.title", function(e){
-  var fullId = $(this).parent().parent().attr('id');
+$(document).on('click', ".title", function(e){
+  var fullId = $(this).data( "full-id" );
+
+  if (typeof fullId === 'undefined') {
+    fullId = $(this).parent().parent().attr('id');
+  }
 
   showModal(fullId);
+});
+
+$(document).on('click', "#searchClosestBtn", function(e){
+  searchClosestRestaurant();
 });

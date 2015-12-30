@@ -22,7 +22,8 @@ function getModalText(id) {
 
   text += "<b class='capitalize'>" + restaurantData[id]['city'] + " - " + restaurantData[id]['area'] + "</b><br />";
 
-  if (restaurantData[id]['info']['open'] != '') {
+  // hide open data because api serves it incorrectly :--)
+  if (false && restaurantData[id]['info']['open'] != '') {
     $.each(restaurantData[id]['info']['open'], function(key, val) {
       text += "<br /><p><b>Lounas " + lang[key] + "</b></p>";
       text += "<p>" + val['open'] + "-" + val['close'] + "</p><br />";
@@ -38,6 +39,10 @@ function getModalText(id) {
   }
 
   //text += '<br /><a href="geo:38.897096,-77.036545"><b>Kartta ravintolaan</b></a>';
+
+  text += '<br /><div class="modalMenu"><img src="img/fa-circle-o.png" class="animated faa-burst small-loading" /></div>';
+
+  fetchMenusForArray( [id], true );
 
   return text;
 }
@@ -61,13 +66,13 @@ function saveAddress(fullId, address, zip, city) {
 }
 
 
-
+function isInApp() {
+  return document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+}
 
 
 function appendShellitFooterIfBrowser() {
-  var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
-
-  if (!app) {
+  if ( !isInApp() ) {
     var html = '<footer><p>Hosted by<br /><a href="http://www.shellit.org/"><img src="img/shellit.png" alt="Shellit.org"></a></p><p><a href="https://play.google.com/store/apps/details?id=com.unilunch.app"><img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" /></a></p></footer>';
     $( html ).insertAfter( '#wrap' );
     $( '#wrap' ).addClass('browser-wrap');
