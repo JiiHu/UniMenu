@@ -59,23 +59,31 @@ function getKmDistanceAsReadable(dist) {
   return readable;
 }
 
-function showClosestRestaurants(list, amount) {
+function addRestaurantToSearchResults(id, dist) {
+  var restaurant = restaurantData[id];
 
+  var text = restaurant.name + '<img src="img/fa-chevron-right.png" class="arrow">';
+  text    += '<small>' + getKmDistanceAsReadable(dist) + '</small>';
+  text     = '<div class="title" data-full-id="' + id + '">' + text + '</div>';
+
+  $('#closestResults').append(text);
+}
+
+function showClosestRestaurants(list, amount) {
   list = list.slice(0, amount-1);
 
+  var previousDist = 0;
+  var gap = 15;
+
   for (var i in list) {
-    var restaurant = restaurantData[ list[i]["id"] ];
     var dist = list[i]["dist"];
+    if ( previousDist != 0 && (dist - previousDist) > gap ) {
+      break;
+    }
 
-    var text = "<b>" + restaurant.name + "</b><br />";
-    text    += getKmDistanceAsReadable(dist) + " päässä<br /><br />";
-
-    $('#closestResults').append(text);
-
-    console.log(list[i]);
+    addRestaurantToSearchResults(list[i]["id"], dist);
+    previousDist = dist;
   }
-
-
 }
 
 function searchClosestRestaurant() {
