@@ -37,6 +37,8 @@ function getModalText(id) {
     text += restaurantData[id]['info']['address'] + ", " + restaurantData[id]['info']['zip'] + " " + restaurantData[id]['info']['city'] + "<br />";
   }
 
+  //text += '<br /><a href="geo:38.897096,-77.036545"><b>Kartta ravintolaan</b></a>';
+
   return text;
 }
 
