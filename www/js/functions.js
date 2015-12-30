@@ -61,13 +61,13 @@ function saveAddress(fullId, address, zip, city) {
 }
 
 
-
+function isInApp() {
+  return document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+}
 
 
 function appendShellitFooterIfBrowser() {
-  var app = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
-
-  if (!app) {
+  if ( !isInApp() ) {
     var html = '<footer><p>Hosted by<br /><a href="http://www.shellit.org/"><img src="img/shellit.png" alt="Shellit.org"></a></p><p><a href="https://play.google.com/store/apps/details?id=com.unilunch.app"><img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" /></a></p></footer>';
     $( html ).insertAfter( '#wrap' );
     $( '#wrap' ).addClass('browser-wrap');

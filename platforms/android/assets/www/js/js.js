@@ -206,6 +206,8 @@ function createEmptyRestaurantData(id, restaurant, area, city) {
   restaurantData[id]['type'] = restaurant.name;
   restaurantData[id]['area'] = area;
   restaurantData[id]['city'] = city;
+  console.log("asd");
+  console.log(restaurant.lat);
   restaurantData[id]['lat'] = '';
   restaurantData[id]['lon'] = '';
   restaurantData[id]['visible'] = false;
@@ -297,9 +299,13 @@ function addCityAndAllItsAreasToNavs(city) {
 
 function checkIfUserHasDoneCitySelections() {
   if ( !hasUserSelectedCities() ) {
-    window.localStorage.setItem('city-helsinki', true);
-    window.localStorage.setItem('city-vantaa', true);
-    window.localStorage.setItem('city-espoo', true);
+    try {
+      window.localStorage.setItem('city-helsinki', true);
+      window.localStorage.setItem('city-vantaa', true);
+      window.localStorage.setItem('city-espoo', true);
+    } catch(error) {
+      $( "#menu" ).append( '<div id="empty-notification"><br /><b>Mene pois selaimen Yksityinen Selaus -tilasta käyttääksesi unimenua</b></div>' );
+    }
   }
 }
 

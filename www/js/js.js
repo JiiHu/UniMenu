@@ -206,8 +206,8 @@ function createEmptyRestaurantData(id, restaurant, area, city) {
   restaurantData[id]['type'] = restaurant.name;
   restaurantData[id]['area'] = area;
   restaurantData[id]['city'] = city;
-  restaurantData[id]['lat'] = '';
-  restaurantData[id]['lon'] = '';
+  restaurantData[id]['lat'] = restaurant.lat;
+  restaurantData[id]['lon'] = restaurant.lon;
   restaurantData[id]['visible'] = false;
   restaurantData[id]['loading'] = false;
   restaurantData[id]['loaded'] = false;
@@ -396,4 +396,8 @@ $(document).on('click', "li.title", function(e){
   var fullId = $(this).parent().parent().attr('id');
 
   showModal(fullId);
+});
+
+$(document).on('click', "#searchClosestBtn", function(e){
+  searchClosestRestaurant();
 });

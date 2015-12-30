@@ -231,10 +231,12 @@ ul#area li a:hover {
   display: none;
 }
 
+#closest,
 #list {
   background-color: #f8f8f8;
 }
 
+#closest .container,
 #list .container {
   padding: 10px;
 }
@@ -436,6 +438,10 @@ li.title small {
   max-width: 35px;
 }
 
+.loadingClosest {
+  padding: 40px 0 40px 35px;
+}
+
 #settings-button {
   background-color: transparent;
   margin-top: 2px;
@@ -459,8 +465,9 @@ li.title small {
 }
 
 
-
-#settings, #list {
+#closest,
+#settings,
+#list {
   margin: 0 -15px;
 }
 
