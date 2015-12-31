@@ -20,25 +20,31 @@ function getLetterForType(type) {
 function getModalText(id) {
   var text = '';
 
-  text += "<b class='capitalize'>" + restaurantData[id]['city'] + " - " + restaurantData[id]['area'] + "</b><br />";
+  var restaurant = restaurantData[id];
+
+  text += "<b class='capitalize'>" + restaurant['city'] + " - " + restaurant['area'] + "</b><br />";
 
   // hide open data because api serves it incorrectly :--)
-  if (false && restaurantData[id]['info']['open'] != '') {
-    $.each(restaurantData[id]['info']['open'], function(key, val) {
+  if (false && restaurant['info']['open'] != '') {
+    $.each(restaurant['info']['open'], function(key, val) {
       text += "<br /><p><b>Lounas " + lang[key] + "</b></p>";
       text += "<p>" + val['open'] + "-" + val['close'] + "</p><br />";
     });
   }
 
-  if (restaurantData[id]['info']['url'] != '') {
+  if (restaurant['info']['url'] != '') {
     text += "<a target='_BLANK' class='link' href='"+restaurantData[id]['info']['url'] + "'>WWW</a> <br />";
   }
 
-  if (restaurantData[id]['info']['address'] != '') {
-    text += restaurantData[id]['info']['address'] + ", " + restaurantData[id]['info']['zip'] + " " + restaurantData[id]['info']['city'] + "<br />";
+
+  if (restaurant['info']['address'] != '' ) {
+    if ( isInApp() ) {
+      text += '<br /><a href="#" class="googleMapsBtn remodal-confirm btn-small" data-lat="' + restaurant.lat + '" data-lon="' + restaurant.lon + '">' + restaurant['info']['address'] + ", " + restaurant['info']['zip'] + " " + restaurant['info']['city'] +'</a>';
+    } else {
+      text += restaurant['info']['address'] + ", " + restaurant['info']['zip'] + " " + restaurant['info']['city'] + "<br />";
+    }
   }
 
-  //text += '<br /><a href="geo:38.897096,-77.036545"><b>Kartta ravintolaan</b></a>';
 
   text += '<br /><div class="modalMenu"><img src="img/fa-circle-o.png" class="animated faa-burst small-loading" /></div>';
 

@@ -22,7 +22,7 @@
 
   </p>
   <br>
-  <button data-remodal-action="close" class="remodal-confirm">Sulje <i class="fa fa-close"></i></button>
+  <button data-remodal-action="close" class="remodal-confirm removeMap">Sulje <i class="fa fa-close"></i></button>
 </div>
 
 <div id="wrap">
@@ -31,16 +31,24 @@
       <a data-tab="#tab4" href="#" class="gear">
         <img src="img/fa-gear.png" alt="Asetukset" />
       </a>
-      <h1 class="site-title">uni<span>menu</span></h1>
+      <h1 class="site-title">uni<span>menu</span>.fi</h1>
       <div class="cb"></div>
     </nav>
 
     <div class="container">
       <ul class="tabs">
-          <li class="active"><a class="active" data-tab="#tab1" href="#">Ravintolani</a></li>
-          <li><a data-tab="#tab5" href="#">Lähellä</a></li>
-          <li><a data-tab="#tab2" href="#">Lista</a></li>
-          <li><a data-tab="#tab3" href="#">Info</a></li>
+          <li class="active">
+            <a class="active removeMap" data-tab="#tab1" href="#">Ravintolani</a>
+          </li>
+          <li>
+            <a class="removeMap" data-tab="#tab5" href="#">Lähellä</a>
+          </li>
+          <li>
+            <a class="removeMap" data-tab="#tab2" href="#">Lista</a>
+          </li>
+          <li>
+            <a class="removeMap" data-tab="#tab3" href="#">Info</a>
+          </li>
       </ul>
 
       <div class="tabs-content">
@@ -65,7 +73,7 @@
 
                 <ul class="tabs">
                   <li class="active">
-                    <a class="active" data-tab="#mapset1" href="#">Lähellä</a>
+                    <a class="active removeMap" data-tab="#mapset1" href="#">Lähellä</a>
                   </li>
                   <li class="">
                     <a class="" data-tab="#mapset2" href="#" id="addMapsBtn">Kartta</a>

@@ -558,6 +558,14 @@ footer p {
 }
 
 
+.remodal-confirm,
+.remodal-cancel {
+  min-width: 70px !important;
+  padding: 12px 10px !important;
+}
+
+
+
 /*--PHONE--*/
 @media (max-width: 767px) {
   #menu .restaurant {

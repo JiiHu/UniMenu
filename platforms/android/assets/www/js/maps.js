@@ -1,5 +1,12 @@
 
+var map;
 
+function removeMap() {
+  if ( typeof yourvar != 'undefined' ) {
+    return;
+  }
+  map.remove();
+}
 
 function addRestaurantsToMap(map) {
 
@@ -29,7 +36,6 @@ function addRestaurantsToMap(map) {
 function centerMapToUserLocation(map) {
 
   var onSuccess = function(position) {
-    console.log("success centering");
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
     var acc = position.coords.accuracy;
@@ -37,7 +43,7 @@ function centerMapToUserLocation(map) {
     var latLon = new plugin.google.maps.LatLng(lat, lon);
 
     var icon = {
-      url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAMAAACfBSJ0AAABPlBMVEUAAAAAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtLoB+n5AAAAaXRSTlMAAQIDBAUGCAkKCwwOEBIUFRYZHB0gISQlJygpKissNTY4Ojw9P0JERUpLUFFUVlhcXWdpbXBxdHh5fH5/goOJjpGSlZ2eoKKtr7CytLW3ubq+wcXMzs/R09XX3N7g5Obo7e/x9ff5+/1AQRYXAAABvUlEQVQYGZXBCVsSQQAG4G/2kE0rLETLDrPMLkvtziy1MlS07DKlhMBEvv//B+qpmQVmZ4bZ94XR6Fylwb+am4tj8CVu1tjj1/0QPiZ/UNOawUBiiQbvI7iFOzQ6SOASfqFFPYGdqNJqP4LVEzqsw2aMTjdg8ZVdby4PCcTjLzpMNUMYXWHq+yik4W2m5mBUpbIVIiVWqTRgUqBSi9BDfKBSgsEUlTL6jFBZgMEzStvQLFPahMEGpVloJii1YPCTUhGamEqArN+UEmgElQhZx5QSaASVGFl1SkVoYioBsnYpzUIzQakNg1eUqtAsU/oEgxkqZfQZofIQBgmVWoQeYodKCSYVKlshUmKVyj6MSkztFSENV5mahtkuu9YuDQlE5ecdpuoCZpN0ugObPTocBbCZosMirMQhrU5i2N2i1VM4BE3anILLA1qswCk6ptlZuD2iUQUDFDo0KWGQlzT4iIFO0+AiBnvLjG/wcI4Z1+Bjg5pDAR9lam7Dz2f2aQXwc5V95uHrgD3aMXxdZ4/H8CYa7Erg7y5Tr5FDcETlDPJYoPQOucRt/nce+dzjPyvIa/6E5JJAbtH4hQKs/gCL37KLaPLzQQAAAABJRU5ErkJggg==",
+      url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAMAAACfBSJ0AAAAe1BMVEUAAAAAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtIAvtKFgf7EAAAAKHRSTlMABAn55hTurn5bKh0Nz7WRUjzf1LuyonA2JiDx14fDnnhoSkRCIQcbQyeGeQAAAVtJREFUSMet1utygjAQBeATBJGbgiDipbZqbc/7P2HbmYIUdhN0+v3N7ASyeyaBKMhrn9/mYZRgsuLIHj83mCJec2BewG1BQe3a0iwpKj172YkK31q4oao0UG1p8QpNQqsCiox3q/gDMLe3fjsMRDE7WYBf6ZKd3HUoocHdii0fEo+to0HffccEgoatPf5I2YqsTViqoxdCELar7xjYdScKQReDAAOGLYOxQ7voYchaN3uyzn/yOyv3ucysQd+oKxUEhbvv5/+cM9SuuS4hSsQcbdhpIKtGud33c+tDEdPqAk1Gi4OBpqFFBN2aqpmB7krVFhZmTo0Hm5yKF1iZGWUB7M4U1XDwKEqeu28rOKUU7OC24kiGCQKONJgi5MAak+w5cMU0J3b0e9ad3whTlWKA3Ao5QG6+GCC3ixggN3Po6lI8IrK/rtz5/cRjcvnv3KKfHRd4nLntPKi+AKMsokQt9WZXAAAAAElFTkSuQmCC",
       size: { width: 36, height: 36 }
     };
 
@@ -51,9 +57,7 @@ function centerMapToUserLocation(map) {
     map.animateCamera({
       target: latLon,
       zoom: 14
-    }, function() {
-      console.log("The animation is done.");
-    });
+    }, function() {});
 
   };
 
@@ -88,7 +92,7 @@ function addMaps() {
     };
 
     // Initialize the map view
-    var map = plugin.google.maps.Map.getMap(mapDiv, mapOptions);
+    map = plugin.google.maps.Map.getMap(mapDiv, mapOptions);
 
     // You have to wait the MAP_READY event.
     map.on(plugin.google.maps.event.MAP_READY, onMapInit);
@@ -104,3 +108,34 @@ function addMaps() {
   }
 
 }
+
+
+$(document).on('click', ".removeMap", function(e){
+  e.preventDefault();
+  removeMap();
+});
+
+$(document).on('click', ".googleMapsBtn", function(e){
+  e.preventDefault();
+
+  var onSuccess = function(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    var acc = position.coords.accuracy;
+
+    var locationFrom = new plugin.google.maps.LatLng(lat, lon);
+    var locationTo = new plugin.google.maps.LatLng( $(this).data("lat"), $(this).data("lon") );
+
+    plugin.google.maps.external.launchNavigation({
+      "from": locationFrom,
+      "to": locationTo
+    });
+
+  };
+
+  function onError(error) {
+    console.log('code: ' + error.code + ', msg: ' + error.message);
+  }
+
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+});
