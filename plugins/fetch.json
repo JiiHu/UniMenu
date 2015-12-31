@@ -17,5 +17,13 @@
             "API_KEY_FOR_ANDROID": "AIzaSyBe9efwHUGG45XnPae5ByKAI3H_d1ShJO4",
             "API_KEY_FOR_IOS": "AIzaSyAfXrQyWHoezqdoE7V8HEjSs0YAZ6VpLNk"
         }
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
