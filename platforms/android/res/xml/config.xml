@@ -23,6 +23,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <allow-navigation href="*" />
     <preference name="backgroundColor" value="0xffffffff" />
     <preference name="KeepRunning" value="false" />
 </widget>

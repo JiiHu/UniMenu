@@ -79,13 +79,8 @@ function generateHtmlForRestaurantDay(foods) {
 }
 
 function generateRestaurantMenuToModal(id) {
-
   var menu = generateFoodHtmlForRestaudant(id);
-  console.log(menu);
-
-
   $('.modalMenu').html( menu );
-
 }
 
 
@@ -374,7 +369,6 @@ $(document).ready(function(){
 
 
 
-
 $(document).on('click', "#nav a.menu-url", function(e){
   e.preventDefault();
   var id = $(this).attr('id-value');
@@ -423,5 +417,11 @@ $(document).on('click', ".title", function(e){
 });
 
 $(document).on('click', "#searchClosestBtn", function(e){
+  e.preventDefault();
   searchClosestRestaurant();
+});
+
+$(document).on('click', "#addMapsBtn", function(e){
+  e.preventDefault();
+  addMaps();
 });
