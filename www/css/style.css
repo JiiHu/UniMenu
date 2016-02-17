@@ -114,6 +114,22 @@ h4 {
   margin: 10px 0 0;
 }
 
+#big-blue {
+  background:rgb(0,190,210);
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  position:absolute;
+  text-align: center;
+}
+
+#big-blue .centered-logo {
+  color: #fff;
+  margin: 25% 0 0 0;
+  padding: 0;
+}
+
 /* TABS */
 
 .tabs-content {
@@ -169,6 +185,7 @@ nav {
   background-color: rgb(0,190,210);
 }
 
+.centered-logo,
 h1 {
   padding: 28px 20px;
   font-size: 24px;
@@ -187,6 +204,7 @@ h1 {
   margin: 25px 25px 0 0;
 }
 
+.centered-logo span,
 h1 span {
   font-weight: 400;
 }

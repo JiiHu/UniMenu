@@ -350,6 +350,8 @@ $(document).ready(function(){
   tabby.init();
   appendShellitFooterIfBrowser();
 
+  $('#big-blue').delay(300).fadeOut(500);
+
 });
 
 
