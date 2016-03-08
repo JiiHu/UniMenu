@@ -320,6 +320,9 @@ $(document).ready(function(){
       addCityToNavs(city);
     }
 
+    //console.log("");
+    //console.log(city.toUpperCase());
+
     for (var area in allRestaurants[city]) {
       if (cityVisible) {
         addAreaToNavs(city, area);
@@ -333,6 +336,8 @@ $(document).ready(function(){
           noSelections = false;
           savedRestaurants.push(savedId);
         }
+
+        //console.log(restaurant.name + " (" + restaurant.type.charAt(0).toUpperCase() + restaurant.type.slice(1) + ")");
 
         createEmptyRestaurantData(savedId, restaurant, area, city);
         addButtonsForRestaurant(savedId, restaurant.name, restaurant.type, saved, city, area);

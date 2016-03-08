@@ -297,9 +297,13 @@ function addCityAndAllItsAreasToNavs(city) {
 
 function checkIfUserHasDoneCitySelections() {
   if ( !hasUserSelectedCities() ) {
-    window.localStorage.setItem('city-helsinki', true);
-    window.localStorage.setItem('city-vantaa', true);
-    window.localStorage.setItem('city-espoo', true);
+    try {
+      window.localStorage.setItem('city-helsinki', true);
+      window.localStorage.setItem('city-vantaa', true);
+      window.localStorage.setItem('city-espoo', true);
+    } catch(error) {
+      $( "#menu" ).append( '<div id="empty-notification"><br /><b>Mene pois selaimen Yksityinen Selaus -tilasta käyttääksesi unimenua</b></div>' );
+    }
   }
 }
 
@@ -316,6 +320,9 @@ $(document).ready(function(){
       addCityToNavs(city);
     }
 
+    //console.log("");
+    //console.log(city.toUpperCase());
+
     for (var area in allRestaurants[city]) {
       if (cityVisible) {
         addAreaToNavs(city, area);
@@ -329,6 +336,8 @@ $(document).ready(function(){
           noSelections = false;
           savedRestaurants.push(savedId);
         }
+
+        //console.log(restaurant.name + " (" + restaurant.type.charAt(0).toUpperCase() + restaurant.type.slice(1) + ")");
 
         createEmptyRestaurantData(savedId, restaurant, area, city);
         addButtonsForRestaurant(savedId, restaurant.name, restaurant.type, saved, city, area);
@@ -345,6 +354,8 @@ $(document).ready(function(){
 
   tabby.init();
   appendShellitFooterIfBrowser();
+
+  $('#big-blue').delay(1000).fadeOut(500);
 
 });
 
