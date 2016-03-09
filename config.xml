@@ -12,4 +12,6 @@
     <preference name="backgroundColor" value="0xffffffff" />
     <preference name="KeepRunning" value="false" />
 
+     <icon src="icon.png" />
+
 </widget>

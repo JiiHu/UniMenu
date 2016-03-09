@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.unilunch.app" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.unilunch.app" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <name>unimenu</name>
     <description>
@@ -12,4 +12,5 @@
     <access origin="*" />
     <preference name="backgroundColor" value="0xffffffff" />
     <preference name="KeepRunning" value="false" />
+    <icon src="icon.png" />
 </widget>
