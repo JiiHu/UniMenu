@@ -13,8 +13,9 @@ var allRestaurants = {
   "helsinki": {
       "arabia": [
         {"type":"amica", "id":3003, "name":"Arcada", "address":"Jan-Magnus Janssonin aukio 1", "zip":"00550", "city":"Helsinki", "lat":60.20153, "lon":24.96623},
-        {"type":"unicafe", "id":25, "name":"Hämeentie", "address":"Hämeentie 161", "zip":"00560", "city":"Helsinki", "lat":60.21426, "lon":24.98113},
+        {"type":"unicafe", "id":25, "name":"Unicafe Hämeentie", "address":"Hämeentie 161", "zip":"00560", "city":"Helsinki", "lat":60.21426, "lon":24.98113},
         {"type":"amica", "id":"0060", "name":"Meccala", "address":"Hämeentie 135 C 5 floor", "zip":"00560", "city":"Helsinki", "lat":60.20840, "lon":24.97565},
+        {"type":"sodexo", "id":"16364", "name": "Hämeentie", "address":"Hämeentie 161", "zip":"00560", "city":"Helsinki", "lat":60.214260, "lon":24.981129},
         {"type":"amica", "id":3007, "name":"Pop&Jazz Konservatorio Jamipaja", "address":"Arabiankatu 2 A", "zip":"00560", "city":"Helsinki", "lat":60.20691, "lon":24.97542}
       ],
     "keskusta": [
@@ -25,6 +26,8 @@ var allRestaurants = {
         {"type":"unicafe", "id":20, "name":"Bulevardi", "address":"Bulevardi 31", "zip":"00180", "city":"Helsinki", "lat":60.16269, "lon":24.93197},
         {"type":"unicafe", "id":5, "name":"Cafe Portaali", "address":"Vuorikatu 3", "zip":"00170", "city":"Helsinki", "lat":60.17027, "lon":24.94784},
         {"type":"unicafe", "id":31, "name":"Gaudeamus Kirja & Kahvi", "address":"Vuorikatu 7", "zip":"00100", "city":"Helsinki", "lat":60.17114, "lon":24.94779},
+        {"type":"sodexo", "id":"16362", "name": "Albert", "address":"Albertinkatu 40-42", "zip":"00180", "city":"Helsinki", "lat":60.165321, "lon":24.931656},
+        {"type":"sodexo", "id":"16363", "name": "Bulevardi", "address":"Bulevardi 31", "zip":"00120", "city":"Helsinki", "lat":60.162686, "lon":24.931974},
         {"type":"unicafe", "id":1, "name":"Metsätalo", "address":"Fabianinkatu 39", "zip":"00170", "city":"Helsinki", "lat":60.17230, "lon":24.94907},
         {"type":"unicafe", "id":2, "name":"Olivia", "address":"Siltavuorenpenger 5 A", "zip":"00170", "city":"Helsinki", "lat":60.17510, "lon":24.95339},
         {"type":"unicafe", "id":3, "name":"Porthania", "address":"Yliopistonkatu 3", "zip":"00170", "city":"Helsinki", "lat":60.16996, "lon":24.94839},
@@ -47,18 +50,19 @@ var allRestaurants = {
       ],
     "meilahti": [
         {"type":"unicafe", "id":13, "name":"Meilahti", "address":"Haartmaninkatu 3", "zip":"00290", "city":"Helsinki", "lat":60.19013, "lon":24.90940},
+        {"type":"sodexo", "id":"16434", "name": "Tukholmankatu", "address":"Tukholmankatu 10", "zip":"00290", "city":"Helsinki", "lat":60.191210, "lon":24.901690},
         {"type":"unicafe", "id":14, "name":"Ruskeasuo", "address":"Kytäsuontie 9", "zip":"00300", "city":"Helsinki", "lat":60.20885, "lon":24.88821},
-        {"type":"unicafe", "id":23, "name":"Tukholmankatu", "address":"Tukholmankatu 10", "zip":"00290", "city":"Helsinki", "lat":60.19121, "lon":24.90169},
       ],
     "muut": [
         {"type":"amica", "id":2123, "name":"Alppica, Helsingin Diakonissalaitoksen Säätiö", "address":"Alppikatu 2", "zip":"00530", "city":"Helsinki", "lat":60.18440, "lon":24.93927},
         {"type":"amica", "id":3140, "name":"Diakonia-AMK", "address":"Sturenkatu 2", "zip":"00510", "city":"Helsinki", "lat":60.18742, "lon":24.94360},
         {"type":"amica", "id":3147, "name":"Edupoli Herttoniemi", "address":"Lämmittäjänkatu 2 A", "zip":"00880", "city":"Helsinki", "lat":60.20287, "lon":25.01396},
-        {"type":"unicafe", "id":22, "name":"Onnentie", "address":"Onnentie 18", "zip":"00600", "city":"Helsinki", "lat":60.21980, "lon":24.95678},
+        {"type":"sodexo", "id":"16361", "name": "Agricola", "address":"Agricolankatu 1-3", "zip":"00500", "city":"Helsinki", "lat":60.184365, "lon":24.956250},
+        {"type":"sodexo", "id":"16432", "name": "Onnentie", "address":"Onnentie 18", "zip":"00600", "city":"Helsinki", "lat":60.219799, "lon":24.956784},
+        {"type":"sodexo", "id":"16433", "name": "Sofianlehto", "address":"Sofialehdonkatu 5 B", "zip":"00610", "city":"Helsinki", "lat":60.203887, "lon":24.950527},
+        {"type":"sodexo", "id":"16448", "name": "Vanha Viertotie 23", "address":"Vanha Viertotie 23", "zip":"00350", "city":"Helsinki", "lat":60.211129, "lon":24.881659},
         {"type":"unicafe", "id":19, "name":"Ricola", "address":"Agricolankatu 1-3", "zip":"00500", "city":"Helsinki", "lat":60.18437, "lon":24.95625},
-        {"type":"unicafe", "id":26, "name":"Sofianlehto", "address":"Sofianlehdonkatu 5 b", "zip":"00610", "city":"Helsinki", "lat":60.20389, "lon":24.95053},
         {"type":"amica", "id":3067, "name":"Teatterikorkeakoulu", "address":"Haapaniemenkatu 6", "zip":"00530", "city":"Helsinki", "lat":60.18110, "lon":24.95887},
-        {"type":"unicafe", "id":24, "name":"Vanha Viertotie", "address":"Vanha Viertotie 23", "zip":"00350", "city":"Helsinki", "lat":60.21113, "lon":24.88166}
       ],
     "pasila": [
         {"type":"amica", "id":"0084", "name":"Helia Bistro. Opetustalo", "address":"Ratapihantie 13", "zip":"00520", "city":"Helsinki", "lat":60.20137, "lon":24.93404},
@@ -86,14 +90,15 @@ var allRestaurants = {
           {"type":"amica", "id":"3579", "name": "VM5", "address":"Vuorimiehentie 5", "zip":"02150", "city":"Espoo", "lat":60.18310, "lon":24.82750},
         ],
       "muut": [
-          {"type":"unicafe", "id":27, "name":"Vanha Maantie", "address":"Vanha Maantie 6", "zip":"02650", "city":"Espoo", "lat":60.22080, "lon":24.80521},
+          {"type":"sodexo", "id":"16435", "name": "Vanha Maantie 6", "address":"Vanha maantie 6", "zip":"02650", "city":"Espoo", "lat":60.220803, "lon":24.805207},
         ]
     },
     "vantaa": {
       "kaikki": [
           {"type":"amica", "id":3146, "name": "Edupoli Tikkurila", "address":"Virnatie 5 A", "zip":"01300", "city":"Vantaa", "lat":60.28728, "lon":25.03360},
           {"type":"amica", "id":3032, "name": "Laurea Hella Wuolijoki", "address":"Ratatie 22", "zip":"01300", "city":"Vantaa", "lat":60.29512, "lon":25.04438},
-          {"type":"unicafe", "id":28, "name":"Leiritie", "address":"Leiritie 1", "zip":"01600", "city":"Vantaa", "lat":60.25859, "lon":24.84558},
+          {"type":"unicafe", "id":28, "name":"Unicafe Leiritie", "address":"Leiritie 1", "zip":"01600", "city":"Vantaa", "lat":60.25859, "lon":24.84557},
+          {"type":"sodexo", "id":"16365", "name": "Leiritie", "address":"Leiritie 1", "zip":"01600", "city":"Vantaa", "lat":60.258586, "lon":24.845581},
         ]
     },
     "kerava": {
