@@ -30,7 +30,7 @@ var allRestaurants = {
         {"type":"sodexo", "id":"16363", "name": "Bulevardi", "address":"Bulevardi 31", "zip":"00120", "city":"Helsinki", "lat":60.162686, "lon":24.931974},
         {"type":"unicafe", "id":1, "name":"Metsätalo", "address":"Fabianinkatu 39", "zip":"00170", "city":"Helsinki", "lat":60.17230, "lon":24.94907},
         {"type":"unicafe", "id":2, "name":"Olivia", "address":"Siltavuorenpenger 5 A", "zip":"00170", "city":"Helsinki", "lat":60.17510, "lon":24.95339},
-        {"type":"unicafe", "id":3, "name":"Porthania", "address":"Yliopistonkatu 3", "zip":"00170", "city":"Helsinki", "lat":60.16996, "lon":24.94839},
+        {"type":"unicafe", "id":39, "name":"Porthania", "address":"Yliopistonkatu 3", "zip":"00170", "city":"Helsinki", "lat":60.16996, "lon":24.94839},
         {"type":"unicafe", "id":34, "name":"Porthania (Opettajien)", "address":"Yliopistonkatu 3", "zip":"00170", "city":"Helsinki", "lat":60.16996, "lon":24.94839},
         {"type":"unicafe", "id":4, "name":"Päärakennus", "address":"Fabianinkatu 33", "zip":"00170", "city":"Helsinki", "lat":60.16944, "lon":24.94959},
         {"type":"unicafe", "id":32, "name":"Ravintola Fredrika Päärakennus", "address":"Fabianinkatu 33 ( 2.krs )", "zip":"00170", "city":"Helsinki", "lat":60.16945, "lon":24.94963},
